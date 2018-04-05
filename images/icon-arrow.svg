@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 8 14" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<path id="a" d="M5.586 7L.293 12.293a1 1 0 0 0 1.414 1.414l6-6a1 1 0 0 0 0-1.414l-6-6A1 1 0 1 0 .293 1.707L5.586 7z"/>
+</defs>
+<use fill="#EA221B" xlink:href="#a"/>
+</svg>

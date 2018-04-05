@@ -1,0 +1,1196 @@
+@charset "utf-8";
+
+
+/*  
+*   MAIN STYLE
+*/
+
+
+.wrap {
+  position: relative;
+  height: 100%;
+  overflow-y: auto;
+  margin: 0 auto;
+  background-color: #000;
+}
+
+
+.header {
+  position: absolute;
+  width: 50%;
+  width: calc(100% - 920px);
+  height: 100vh;
+
+  ///// 미디어쿼리 /////     
+  @include pc-sm {
+    width: calc(100% - 56vw);
+  }    
+  @include tablet-lg {
+    width: calc(100% - 53vw);
+  }
+  @include mobile {
+    width: 100%;
+    height: 90px;
+  }
+  
+  .logo-symbol {
+    z-index: 1;    
+    position: absolute;
+    top: 50%;
+    left: 58%;
+    overflow-x: hidden;
+    display: block;
+    width: 160px;
+    height: 160px;
+    margin-top: -80px;
+    margin-left: -160px;
+    text-indent: -9999px;
+    background-image: url(../images/logo-symbol.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    
+    @include pc-sm {
+      //outline: 4px solid gold;
+      width: 120px;
+      height: 120px;
+      margin-top: -60px;
+      margin-left: -145px;
+    }
+    @include tablet-lg {
+      //outline: 4px solid green;
+      width: 100px;
+      height: 100px;
+      margin-top: -50px;
+      margin-left: -130px;
+    }
+    @include mobile {
+      top: 21px;
+      left: 20px;
+      width: 50px;
+      height: 50px;
+      margin-top: 0;
+      margin-left: 0;
+    }
+    
+  }
+}
+
+.main {
+  overflow-y: hidden;
+  position: relative;
+  overflow-x: hidden;
+  width: 100%;
+  height: 100vh;
+  min-height: 640px;
+  max-height: 1080px;
+  margin: 0 auto;
+  background-image: url(../images/bg-main.png);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+  
+  @include mobile {
+    height: 667px;
+  }
+  
+  .grid {
+    position: relative;
+    max-width: 1920px;
+    margin: 0 auto;
+  }
+  
+
+
+  .link-onePager {
+    position: absolute;
+    top: 30px;
+    right: 60px;
+    display: table;
+    padding-bottom: 2px;
+    font-size: 20px;
+    font-weight: 700; //(나눔바른고딕용 타이포)
+    letter-spacing: 1px; //(나눔바른고딕용 타이포)
+    border-bottom: 1px solid #fff;
+
+    ///// 미디어쿼리 /////
+    @include pc-sm {
+      right: 5vw;
+    }
+    @include tablet-lg {
+      font-size: 16px;
+    }
+    @include mobile {
+      top: -56px;
+      right: 0;
+    }
+  }
+
+  
+  .contents-container {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    flex-direction: column;
+    -ms-flex-direction: column;
+    justify-content: center;
+    -ms-flex-pack: center;
+    -ms-flex-align: center;
+    align-items: flex-start;
+    position: absolute;
+    top: 50%;
+    right: 40px;
+    transform: translateY(-50%);
+    width: 920px;
+    height: 90%;
+    padding-left: 80px;
+    height: calc(100% - 80px);
+    max-height: 1000px;
+    padding-top: 20px;
+    //opacity: 0.85;
+    box-sizing: border-box;
+    background-color: rgba(234, 34, 27, 0.85);
+    
+    ///// 미디어쿼리 /////     
+    @include pc-sm {
+      width: 60vw;
+      padding-left: 5vw;
+    }    
+    @include tablet-lg {
+      width: 60vw;
+    }
+    @include mobile {
+      left: 50%;
+      top: 50%;
+      right: 0;
+      width: calc(100% - 40px);
+      height: 557px;
+      margin-top: 35px;
+      padding: 0 30px;
+      transform: translateX(-50%) translateY(-50%);
+    }
+    
+    .logo-title {
+      overflow: hidden;
+      width: 230px;
+      height: 50px;
+      margin-bottom: 15px;
+      text-indent: -999px;
+      background-image: url(../images/logo-title.png);
+      background-repeat: no-repeat;
+      background-position: 0 50%;
+      background-size: 100%;
+      
+        ///// 미디어쿼리 /////
+        @include pc-sm {
+          margin-bottom: 12px;
+          width: 190px;
+          height: 40px;
+        }
+        @include tablet-lg {
+          margin-bottom: 10px;
+          width: 180px;
+          height: 40px;
+        }
+        @include mobile {
+          width: 150px;
+          height: 32px;
+        }
+      
+    }
+  
+    .text-stage {
+      @include font-sub;
+      font-size: 20px;
+      
+      
+      ///// 미디어쿼리 /////
+      @include pc-sm {
+        font-size: 18px;
+      }
+      @include tablet-lg {
+        font-size: 16px;
+      }
+      
+    }
+    
+    .title-description {
+      margin-top: 50px;
+      margin-bottom: 125px;
+      font-size: 50px;
+      font-weight: 700;
+      line-height: 1.24;
+      //letter-spacing: -0.3px;
+      letter-spacing: 2px; //(나눔바른고딕용 타이포 조절)
+      color: #fff;
+      
+      ///// 미디어쿼리 /////
+      @include pc-sm {
+        font-size: 40px;
+      }
+      @include tablet-lg {
+        margin-top: 40px;
+        margin-bottom: 100px;
+        font-size: 30px;
+      }
+      @include mobile {
+        margin-top: 30px;
+        margin-bottom: 80px;
+        font-size: 24px;
+        line-height: 1.33;
+      }
+    }
+  }
+  
+  .form-subscribe {
+    position: relative;
+    width: 620px;
+
+    ///// 미디어쿼리 /////
+    @include pc-sm {
+      max-width: 560px;
+      width: 50vw;
+    }
+    @include tablet-lg {
+      max-width: 450px;
+      width: 45vw;
+    }
+    @include mobile {
+      width: 100%;
+      max-width: 380px;
+    }
+    
+    label {
+      position: relative;
+    }
+    
+    .form-email {
+      width: 100%;
+      height: 70px;
+      font-size: 20px;
+      color: #fff;
+      padding: 0 30px;
+      border-radius: 35px;
+      background-color: rgba(255, 255, 255, 0.2);
+      border: 1px solid #fff;
+
+      ///// 미디어쿼리 /////
+      @include pc-sm {
+        padding: 0 185px 0 28px;
+        font-size: 18px;
+        height: 63px; 
+      }
+      @include tablet-lg {
+        padding: 0 160px 0 25px;
+        font-size: 16px;
+        height: 55px;
+      }
+      @include tablet {
+        padding: 0 145px 0 20px;
+      }
+      @include mobile {
+        padding: 0 55px 0 25px;
+        
+      }
+      
+      &:focus {
+        outline: 0;
+      }
+      
+
+      $placeholder-size: 20px;
+      $placeholder-color: #fff;
+      $placeholder-transition: color .3s, opacity .3s;
+
+      &::-webkit-input-placeholder { 
+        font-size: $placeholder-size;
+        color: $placeholder-color;
+        transition: $placeholder-transition;
+          ///// 미디어쿼리 /////
+          @include pc-sm {
+            font-size: 18px;
+          }
+          @include tablet-lg {
+            font-size: 16px;
+          }
+      }
+      &:-ms-input-placeholder {
+        font-size: $placeholder-size;
+        color: $placeholder-color;
+        transition: $placeholder-transition;
+          ///// 미디어쿼리 /////
+          @include pc-sm {
+            font-size: 18px;
+          }
+          @include tablet-lg {
+            font-size: 16px;
+          }
+      }
+      &:-moz-placeholder {
+        opacity: 1;
+        font-size: $placeholder-size;
+        color: $placeholder-color;
+        transition: $placeholder-transition;
+          ///// 미디어쿼리 /////
+          @include pc-sm {
+            font-size: 18px;
+          }
+          @include tablet-lg {
+            font-size: 16px;
+          }
+      }
+      &::-moz-placeholder {
+        opacity: 1;
+        font-size: $placeholder-size;
+        color: $placeholder-color;
+        transition: $placeholder-transition;
+          ///// 미디어쿼리 /////
+          @include pc-sm {
+            font-size: 18px;
+          }
+          @include tablet-lg {
+            font-size: 16px;
+          }
+      }
+      
+      &:focus::-webkit-input-placeholder {
+        color: transparent;
+        transition: $placeholder-transition;
+          ///// 미디어쿼리 /////
+          @include pc-sm {
+            font-size: 18px;
+          }
+          @include tablet-lg {
+            font-size: 16px;
+          }
+      }
+      &:focus:-ms-input-placeholder {
+        color: transparent;
+        transition: $placeholder-transition;
+          ///// 미디어쿼리 /////
+          @include pc-sm {
+            font-size: 18px;
+          }
+          @include tablet-lg {
+            font-size: 16px;
+          }
+      }
+      &:focus:-moz-placeholder {
+        color: transparent;
+        opacity: 0;
+        transition: $placeholder-transition;
+          ///// 미디어쿼리 /////
+          @include pc-sm {
+            font-size: 18px;
+          }
+          @include tablet-lg {
+            font-size: 16px;
+          }
+      }
+      &:focus::-moz-placeholder {
+        color: transparent;
+        opacity: 0;
+        transition: $placeholder-transition;
+          ///// 미디어쿼리 /////
+          @include pc-sm {
+            font-size: 18px;
+          }
+          @include tablet-lg {
+            font-size: 16px;
+          }
+      }
+    }
+  
+    
+    .form-button {
+      //padding: 10px 22px 10px 12px;
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 180px;
+      height: 54px;
+      padding-right: 20px;
+      color: #ea221b;
+      font-size: 19px;
+      border-radius: 35px;
+      background-image: url(../images/icon-arrow.svg);
+      background-color: #fff;
+      background-repeat: no-repeat;
+      background-position: 77% 19px;
+      background-size: 8px 14px;
+      cursor: pointer;
+      
+      &:hover,
+      &:focus,
+      &:active{
+        background-color: #ffe0e0;
+        outline: 0;
+      }
+
+      ///// 미디어쿼리 /////
+      @include pc-sm {
+        top: 6px;
+        right: 6px;
+        width: 170px;
+        font-size: 18px;
+        height: 50px; 
+        background-position: 77% 16px;
+      }
+      @include tablet-lg {
+        top: 5px;
+        right: 5px;
+        width: 150px;
+        font-size: 16px;
+        height: 45px;
+        background-position: 77% 14px;
+      }
+      @include tablet {
+        width: 130px;
+        padding-right: 14px;
+        background-position: 84% 14px;
+      }
+      @include mobile {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        background-position: 55% 14px;
+      }
+    }
+  }
+  
+} //end of .main
+
+.footer {
+  width: 100%;
+  height: 300px;
+  background-color: #000;
+    box-sizing: border-box;
+    border: 1px solid #000;
+  
+  ///// 미디어쿼리 /////
+  @include tablet-lg {
+    height: 284px;
+  }
+  @include mobile {
+    height: auto;
+  }
+  
+  .grid {
+    overflow: hidden;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    max-width: 1200px;
+    padding-top: 90px;
+
+    ///// 미디어쿼리 /////
+    @include pc-sm {
+      padding-top: 80px;
+      max-width: 960px;
+    }
+    @include tablet-lg {
+      padding-top: 72px;
+      padding-left: 0;
+      padding-right: 0;
+      max-width: 90%;
+    }
+    @include tablet {
+      //max-width: 85%;
+    }
+    @include mobile {
+      max-width: 100%;
+      padding: 70px 40px;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      
+      
+      overflow: hidden;
+    }
+  }
+  
+  .footer-col {
+    flex-basis: 320px;
+    
+    ///// 미디어쿼리 /////
+    @include pc-sm {
+      flex-basis: 280px;
+    }
+    @include tablet-lg {
+      flex-basis: 230px;
+    }
+    @include tablet {
+      flex-basis: 33%;
+    }
+    
+    
+    &:first-child {
+      flex-basis: 300px;
+
+      ///// 미디어쿼리 /////
+      @include pc-sm {
+        flex-basis: 260px;
+      }
+      @include tablet-lg {
+        flex-basis: 240px;
+      }
+      @include tablet {
+        flex-basis: 30%;
+      }
+      @include mobile {
+        flex-basis: 110px;
+      }
+    }
+    
+    &:nth-child(2) {
+      margin-right: 90px;
+    
+        ///// 미디어쿼리 /////
+        @include pc-sm {
+          margin-right: 70px;
+        }
+        @include tablet-lg {
+           margin-right: 60px;
+        }
+        @include tablet {
+           margin-right: 50px;
+        }
+        @include mobile {
+          flex-basis: 130px;
+        }
+      
+    }
+    
+    &:nth-child(3) {
+      @include mobile {
+        margin-top: 50px;
+      }
+      @include mobile {
+        flex-basis: 70px;
+      }
+    }
+    
+    p, a {
+      font-size: 16px;
+      line-height: 1.5;
+      
+      @include tablet-lg {
+        font-size: 15px;
+      }
+      @include tablet {
+        font-size: 14px;
+      }
+      @include mobile {
+        font-size: 15px;
+      }
+    }
+    
+    .bar {
+      display: block;
+      margin: 20px auto;
+      width: 100%;
+      height: 1px;
+      background-color: #444;
+    }
+    
+    .footer-col-top {
+      display: block;
+      
+      &:after {
+        display: block;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        width: 100%;
+        height: 1px;
+        background-color: #444;
+        content: '';
+      
+          @include mobile {
+            width: 70vw;
+          }
+      }
+    }
+  }
+  
+  .logo-footer {
+    overflow-x: hidden;
+    display: block;
+    width: 148px;
+    height: 36px;
+    text-indent: -9999px;
+    background-image: url(../images/logo-footer.png);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: 100%;
+    
+    ///// 미디어쿼리 /////
+    @include pc-sm {
+    }
+    @include tablet-lg {
+      width: 130px;
+      height: 33px;
+    }
+    @include tablet {
+      width: 110px;
+      height: 28px;
+    }
+    @include mobile {
+      width: 148px;
+      height: 36px;
+      margin-bottom: 70px;
+    }
+    
+  }
+  
+  
+  .sns {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex; 
+      
+    @incldue tablet-lg {
+      flex-wrap: wrap;
+    }
+    
+    [class^=sns-] {    
+      overflow-x: hidden;
+      width: 36px;
+      height: 36px;
+      margin-left: 12px;
+      text-indent: -9999px;
+      background-size: 100%;
+      background-image: url(../images/icon-sns.png);
+      
+      a {
+        @include block-anchor;
+      }
+      
+      &:first-child {
+        margin-left: 0;
+      }
+      
+      @incldue tablet-lg {
+        margin-left: 0;
+      }
+    }
+    
+    $bg-position: (
+      'fb': 0 0, //페이스북
+      'tw': 0 100%, //트위터
+      'tl': 0 75%, //텔레그램
+      'sl': 0 50%, //슬랙
+      'kt': 0 25%, //카카오톡
+    );
+    
+    @each $map, $value in $bg-position {
+      
+      .sns-#{$map} {
+        background-position: $value;
+      }
+      
+    }
+    
+  }
+  
+  
+}
+
+
+.font-kr {
+  @include font-sub;
+  font-weight: 300;
+  letter-spacing: -0.1rem;
+}
+
+.font-jp {
+  font-family: 'Hiragino', 'Meiryo', sans-serif;
+  letter-spacing: -0.1rem;
+}
+
+
+
+
+/* MODAL */
+
+.modal {
+  
+  .dim {
+    display: none; 
+    z-index:300;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-color:rgba(0,0,0,0.6);
+  }
+  
+  .modal-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 600px;
+    //height: 600px;
+    padding: 70px 60px;
+    transform: translateX(-50%) translateY(-50%);
+    box-sizing: border-box;
+    background-color: #fff;
+    
+    @include tablet-lg {
+      width: 540px;
+      padding: 60px 50px;
+    }
+    @include mobile {
+      width: 90%;
+      padding: 42px 20px;
+      
+//      position: relative;
+//      width: 100%;
+//      overflow: hidden;
+    }
+    
+    .modal-header {
+      .modal-title {
+        font-size: 60px;
+        letter-spacing: 1px; //(나눔바른고딕용 타이포)
+        font-weight: 700; //(나눔바른고딕용 타이포)
+        color: #ea221b;
+        
+        @include tablet-lg {
+          font-size: 40px;
+        }
+        
+        @include tablet {
+          font-size: 35px;
+        }
+      }
+    }
+    
+    .modal-body {
+      overflow: auto;
+      width: calc(100% - 15px);
+      height: 245px;
+      padding: 10px 15px;
+      margin-top: 40px;
+      background-color: #f5f5f5;
+      border: 1px solid #e0e0e0;
+      border-radius: 3px;
+      color: #aaaaaa;
+      line-height: 22px;
+      font-size: 14px;
+      //word-break: keep-all;
+      
+      @include tablet-lg {
+        //width: 440px;
+      }
+      @include mobile {
+        
+          width: calc(100% - 30px);
+          height: 20vh;
+          max-height: 300px;
+      }
+
+    }
+    
+    .modal-footer {
+      
+      .button-container {
+        display: -webkit-inline-flex;
+        display: -moz-inline-flex;
+        display: -ms-inline-flex;
+        display: -o-inline-flex;
+        display: inline-flex;
+        padding: 0 27px;
+        height: 54px;
+        margin-top: 30px;
+        background-color: #fd2022;
+        border-radius: 35px;
+        
+         ///// 미디어쿼리 /////
+          @include tablet-lg {
+            height: 50px;
+            margin-top: 38px;
+          }
+          @include mobile {
+            max-width: 176px;
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flex;
+            display: -o-flex;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0;
+            height: auto;
+            background-color: transparent;
+          }
+        
+        label {
+          margin-left: 40px;
+          height: 100%;
+            
+            @include mobile {
+              margin-left: 0;
+            }
+
+          &:before {
+            position: absolute;
+            top: 50%;
+            left: -20px;
+            display: block;
+            margin-top: -17px;
+            width: 1px;
+            height: 34px;
+            background-color: #cd0d0e;
+            content: '';
+            
+            @include mobile {
+              display: none;
+            }
+          }
+          
+          &:first-child {
+            margin-left: 0;
+            
+            input {
+               @include mobile {
+                 margin-top: 0;
+               }
+            }
+
+            &:before {
+              display: none;
+            }
+          }
+          &:nth-child(2) {
+            
+            input {
+               @include mobile {
+                 margin-top: 0;
+               }
+            }
+          }
+        }
+        
+       input {
+          width: 60px;
+          height: 100%;
+          text-align: left;
+          color: #fff;
+          font-size: 19px;
+          background-image: url(../images/icon-download.svg), url(../images/icon-download-hover.png);
+          background-repeat: no-repeat;
+          background-position: 100% 20px, -100% -100%;
+          background-size: 12px 13px;
+          cursor: pointer;
+
+         &:hover {
+           color: #000;
+           background-position: -100% -100%, 100% 20px;
+         }
+         
+         &:focus,
+         &:active {
+           outline: 0;
+         }
+         
+         
+         ///// 미디어쿼리 /////
+          @include pc-sm {
+            font-size: 18px; 
+          }
+          @include tablet-lg {
+            width: 54px;
+            font-size: 16px;
+            background-position: 100% 18px, -100% -100%;
+            
+            &:hover {
+              background-position: -100% -100%, 100% 18px;
+            }
+          }
+          @include mobile {
+            width: 84px;
+            font-size: 15px;
+            margin-top: 8px;
+            padding: 10px 25px 10px 5px;
+            text-align: center;
+            background-color: #fd2022;
+            background-position: 75% 13px, -100% -100%;
+            border-radius: 35px;
+            
+            &:hover {
+              background-position: -100% -100%, 75% 13px;
+            }
+          }
+         
+         
+        }
+      }
+      
+//      .form-button-download {
+//          width: 180px;
+//          height: 54px;
+//          padding-right: 20px;
+//          margin-top: 30px;
+//          color: #fff;
+//          font-size: 19px;
+//          border-radius: 35px;
+//          background-image: url(../images/icon-download.svg);
+//          background-color: #ea221b;
+//          background-repeat: no-repeat;
+//          background-position: 78% 20px;
+//          background-size: 12px 13px;
+//          cursor: pointer;
+//          transition: background-color .3s;
+//
+//          &:hover,
+//          &:focus,
+//          &:active{
+//            outline: 0;
+//          }
+//
+//          ///// 미디어쿼리 /////
+//          @include pc-sm {
+//            //top: 6px;
+//            //right: 6px;
+//            width: 170px;
+//            font-size: 18px;
+//            height: 50px; 
+//            background-position: 77% 18px;
+//          }
+//          @include tablet-lg {
+//            //top: 5px;
+//            //right: 5px;
+//            width: 150px;
+//            font-size: 16px;
+//            height: 45px;
+//            background-position: 77% 16px;
+//          }
+//          @include tablet {
+//            width: 130px;
+//            margin-top: 20px;
+//            padding-right: 14px;
+//            background-position: 84% 14px;
+//          }
+//          @include mobile {
+//            //width: 45px;
+//            //height: 45px;
+//            margin-top: 15px;
+//            //border-radius: 50%;
+//            //background-position: 52% 14px;
+//          }
+//        }
+      
+      .error {
+        .errorMsg{
+          display: block;
+        }
+      }
+      
+      .form-password:valid + .form-button-download {
+        //outline: 4px solid gold;
+        background-color: #ea221b;
+        transition: background-color .3s;
+        cursor: pointer;
+        pointer-events: initial !important;
+      }
+      
+        
+        .errorMsg {
+          display: none;
+          position: absolute;
+          left: 24px;
+          bottom: -26px;
+          color: #ea221b;
+          font-size: 13px;
+          @include mobile {
+            //left: 14px;
+            bottom: -20px;
+            font-size: 11px;
+          }
+        }
+        
+      
+      
+      .form-modal {
+        position: relative;
+        width: 100%;
+        margin-top: 40px;
+        
+        .form-password {
+            width: 100%;
+            height: 70px;
+            font-size: 20px;
+            color: #ea221b;
+            padding: 0 30px;
+            border-radius: 35px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border: 1px solid #e0e0e0;
+
+            ///// 미디어쿼리 /////
+            @include pc-sm {
+              padding: 0 185px 0 28px;
+              font-size: 18px;
+              height: 63px; 
+            }
+            @include tablet-lg {
+              padding: 0 160px 0 25px;
+              font-size: 16px;
+              height: 55px;
+            }
+            @include tablet {
+              padding: 0 145px 0 20px;
+            }
+            @include mobile {
+              padding: 0 55px 0 25px;
+
+            }
+
+            &:focus {
+              outline: 0;
+            }
+          
+          
+
+      $placeholder-size: 20px;
+      $placeholder-color: #aaa;
+      $placeholder-transition: color .3s, opacity .3s;
+
+      &::-webkit-input-placeholder { 
+        font-size: $placeholder-size;
+        color: $placeholder-color;
+        transition: $placeholder-transition;
+          ///// 미디어쿼리 /////
+          @include pc-sm {
+            font-size: 18px;
+          }
+          @include tablet-lg {
+            font-size: 16px;
+          }
+      }
+      &:-ms-input-placeholder {
+        font-size: $placeholder-size;
+        color: $placeholder-color;
+        transition: $placeholder-transition;
+          ///// 미디어쿼리 /////
+          @include pc-sm {
+            font-size: 18px;
+          }
+          @include tablet-lg {
+            font-size: 16px;
+          }
+      }
+      &:-moz-placeholder {
+        opacity: 1;
+        font-size: $placeholder-size;
+        color: $placeholder-color;
+        transition: $placeholder-transition;
+          ///// 미디어쿼리 /////
+          @include pc-sm {
+            font-size: 18px;
+          }
+          @include tablet-lg {
+            font-size: 16px;
+          }
+      }
+      &::-moz-placeholder {
+        opacity: 1;
+        font-size: $placeholder-size;
+        color: $placeholder-color;
+        transition: $placeholder-transition;
+          ///// 미디어쿼리 /////
+          @include pc-sm {
+            font-size: 18px;
+          }
+          @include tablet-lg {
+            font-size: 16px;
+          }
+      }
+      
+      &:focus::-webkit-input-placeholder {
+        color: transparent;
+        transition: $placeholder-transition;
+          ///// 미디어쿼리 /////
+          @include pc-sm {
+            font-size: 18px;
+          }
+          @include tablet-lg {
+            font-size: 16px;
+          }
+      }
+      &:focus:-ms-input-placeholder {
+        color: transparent;
+        transition: $placeholder-transition;
+          ///// 미디어쿼리 /////
+          @include pc-sm {
+            font-size: 18px;
+          }
+          @include tablet-lg {
+            font-size: 16px;
+          }
+      }
+      &:focus:-moz-placeholder {
+        color: transparent;
+        opacity: 0;
+        transition: $placeholder-transition;
+          ///// 미디어쿼리 /////
+          @include pc-sm {
+            font-size: 18px;
+          }
+          @include tablet-lg {
+            font-size: 16px;
+          }
+      }
+      &:focus::-moz-placeholder {
+        color: transparent;
+        opacity: 0;
+        transition: $placeholder-transition;
+          ///// 미디어쿼리 /////
+          @include pc-sm {
+            font-size: 18px;
+          }
+          @include tablet-lg {
+            font-size: 16px;
+          }
+      }
+          
+          
+          
+        }
+      }
+    }
+    
+  }
+  
+  .modal-close {
+    position: absolute;
+    top: 0;
+    right: -50px;
+    
+    display: block;
+    width: 50px;
+    height: 50px;
+    background-color: #ea221b;
+    background-position: 50% 50%;
+    background-size: 18px 18px;
+    background-repeat: no-repeat;
+    background-image: url(../images/icon-close.svg);
+    
+    @include tablet-lg {
+      width: 46px;
+      height: 46px;
+      right: -46px;
+    }
+    @include mobile {
+        right: 0;
+      top: -46px;
+    }
+  }
+  
+  
+}

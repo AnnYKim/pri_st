@@ -1,0 +1,63 @@
+@charset "utf-8";
+
+/*!   
+*   FONT STYLE
+*/
+
+
+// 나눔바른고딕 (180316 추가)
+
+@font-face {
+ font-family: 'NanumBarunGothic';
+ font-weight: 400;
+ src: url(#{$path-font}NanumBarunGothicWebLight.eot);
+ src: url(#{$path-font}NanumBarunGothicWebLight.eot?#iefix) format('embedded-opentype'),
+      url(#{$path-font}NanumBarunGothicWebLight.woff) format('woff');
+}
+
+@font-face {
+ font-family: 'NanumBarunGothic';
+ font-weight: 500;
+ src: url(#{$path-font}NanumBarunGothicWeb.eot);
+ src: url(#{$path-font}NanumBarunGothicWeb.eot?#iefix) format('embedded-opentype'),
+      url(#{$path-font}NanumBarunGothicWeb.woff) format('woff');
+}
+@font-face {
+ font-family: 'NanumBarunGothic';
+ font-weight: 700;
+ src: url(#{$path-font}NanumBarunGothicWebBold.eot);
+ src: url(#{$path-font}NanumBarunGothicWebBold.eot?#iefix) format('embedded-opentype'),
+      url(#{$path-font}NanumBarunGothicWebBold.woff) format('woff');
+}
+
+//
+//@font-face {
+//	font-family: 'CircularStd'; 
+//  font-style: normal;
+//  font-weight: 400;
+//  src: url(#{$path-font}CircularStd-Book.eot);
+//  src: url(#{$path-font}CircularStd-Book.eot?#iefix) format('embedded-opentype'),
+//       url(#{$path-font}CircularStd-Book.woff) format('woff');
+//}
+//
+//
+//
+//@font-face {
+//	font-family: 'CircularStd'; 
+//  font-style: normal;
+//  font-weight: 600;
+//  src: url(#{$path-font}CircularStd-Medium.eot);
+//  src: url(#{$path-font}CircularStd-Medium.eot?#iefix) format('embedded-opentype'),
+//       url(#{$path-font}CircularStd-Medium.woff) format('woff'),
+//       url(#{$path-font}CircularStd-Medium.woff2) format('woff2');
+//}
+//
+//
+//@font-face {
+//	font-family: 'CircularStd'; 
+//  font-style: normal;
+//  font-weight: 700;
+//  src: url(#{$path-font}CircularStd-Bold.eot);
+//  src: url(#{$path-font}CircularStd-Bold.eot?#iefix) format('embedded-opentype'),
+//       url(#{$path-font}CircularStd-Bold.woff) format('woff');
+//}
