@@ -4,3 +4,44 @@
 /*  
 *   SECTION(3)
 */
+
+.section.model {
+  background-color: #fff;
+
+  .grid {
+    @include flexbox;
+    @include flex-direction(column);
+    @include justify-content(center);
+  }
+
+  .section-title {
+    text-align: center;
+
+    .section-title-main {
+      color: #222;
+      font-size: 50px;
+    }
+
+    .section-title-sub {
+      color: #222;
+      line-height: 1.7;
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+  }//end of .section-title
+
+
+  .section-description {
+    max-width: 880px;
+    margin: 50px auto 0;
+
+    p {
+      color: #222;  
+      text-align: center;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+  }
+
+}

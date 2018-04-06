@@ -1,0 +1,85 @@
+@charset "utf-8";
+
+
+/*  
+*   SECTION(4)
+*/
+
+.section.team {
+  background-color: #fff;
+
+  .section-title {
+
+    .section-title-main {
+      color: #222;
+      text-align: center;
+    }
+
+    .section-title-sub {
+      color: #222;
+      text-align: center;
+    }
+  }//end of .section-title
+
+  .section-contents {
+
+    .team {
+      position: relative;
+
+      .team-list {
+        position: absolute;
+        outline: 2px dotted #aaa;
+
+        &:before {
+          display: block;
+          width: 118px;
+          height: 118px;
+          content: '';
+          background-size: 100%;
+          margin-bottom: 24px;
+          background-color: peru;
+          border-radius: 50%;
+        }
+
+        .list-title {
+          color: #222;
+          font-weight: 700;
+          font-size: 14px;
+          letter-spacing: 0.025rem;
+        }
+
+        .list-description {
+          margin-top: 15px;
+          color: #5f5f5f;
+          font-size: 12px;
+          font-weight: 500;
+          line-height: 1.4;
+          letter-spacing: 0.015rem;
+        }
+      }
+    }//end of .team
+
+    .category {
+      @include flexbox;
+      @include justify-content(center);
+      position: absolute;
+      bottom: 30px;
+      width: 1100px;
+
+      .category-list {
+        display: inline-block;
+        margin-left: 24px;
+
+        &:first-child {
+          margin-left: 0;
+        }
+
+        & > a {
+          color: #c2c2c2;
+          font-weight: 500;
+        }
+      }
+    }
+
+  }//end of .section-contents
+}
