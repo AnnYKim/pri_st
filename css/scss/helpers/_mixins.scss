@@ -46,6 +46,12 @@
 }
 
 
+@mixin fadeIn($time_1:1.5s, $time_2:2s){
+    transition: opacity $time_1, transform $time_2; 
+    -webkit-transition: opacity $time_1, transform $time_2; 
+    transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+}
+
 // --------------------------------------------------
 // Flexbox SASS mixins
 // The spec: http://www.w3.org/TR/css3-flexbox
@@ -220,3 +226,4 @@
         filter:alpha(opacity=0);
     }
  }
+

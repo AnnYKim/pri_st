@@ -6,29 +6,137 @@
 */
 
 .section.team {
+  padding-top: 160px;
+  height: 920px;
   background-color: #fff;
 
+  .grid {
+    position: relative;
+  }
+
   .section-title {
+    //margin-top: 220px;
 
     .section-title-main {
-      color: #222;
-      text-align: center;
+      visibility: hidden;
+      @include text-hidden;
     }
 
     .section-title-sub {
-      color: #222;
+      color: #000;
       text-align: center;
+      font-size: 24px;
+      font-weight: 500;
+      line-height: 1.55;
     }
   }//end of .section-title
 
   .section-contents {
+  
+
+    .category {
+      @include flexbox;
+      @include justify-content(center);
+      margin-top: 50px;
+
+      .category-list {
+        position: relative;
+        margin-left: 24px;
+
+        &:before {
+          position: absolute;
+          top: 2px;
+          left: -13px;
+          display: block;
+          width: 1px;
+          height: 15px;
+          content: '';
+          background-color: #d1d1d1;
+        }
+
+        &:first-child {
+          margin-left: 0;
+          &:before {
+            display: none;
+          }
+        }
+
+        & > a {
+          color: #c2c2c2;
+          font-size: 16px;
+          font-weight: 500;
+          letter-spacing: 0.05rem;
+        }
+      }
+    }//end of .category
 
     .team {
       position: relative;
+      //@include flexbox;
+      margin-top: 30px;
+      height: 550px;
+      //margin-bottom: 250px;
+
+      //각 팀원 프로필 사진
+      $team : (
+        'nassun' : 0 66.67%,
+        'aaron'  : 0 0,
+        'thomas' : 0 83.33%,
+        'michael': 0 50%,
+        'ducksoo': 0 16.67%,
+        'yoonjin': 0 100%,
+        'jinwoo' : 0 33.33%,
+      );
+
+      @each $name, $value in $team {
+        .team-#{$name}:before {
+          background-position: $value;
+        }
+      }
 
       .team-list {
         position: absolute;
-        outline: 2px dotted #aaa;
+
+        &:nth-child(2) { 
+          left: 110px;
+        }
+
+        &:nth-child(3) { 
+          left: 340px;
+        }
+
+        &:nth-child(4) { 
+          left: 50%;
+          margin-left: -59px;
+        }
+
+        &:nth-child(5) { 
+          right: 340px;
+        }
+
+        &:nth-child(6) {
+          right: 110px;
+        }
+
+        &:nth-child(7) {
+          right: 0px;
+        }
+
+        &:nth-child(1),
+        &:nth-child(5) {
+          top: 0;
+        }
+
+        &:nth-child(3),
+        &:nth-child(5) {
+          top: 130px;
+        }
+
+        &:nth-child(2),
+        &:nth-child(4),
+        &:nth-child(6) {
+          bottom: 0;
+        }
 
         &:before {
           display: block;
@@ -37,49 +145,29 @@
           content: '';
           background-size: 100%;
           margin-bottom: 24px;
-          background-color: peru;
+          background-image: url(#{$path-image}pic-team.png);
           border-radius: 50%;
+          box-shadow: 9px 0 60px -8px rgba(156,156,156,0.5);
         }
 
         .list-title {
-          color: #222;
+          color: #000;
           font-weight: 700;
-          font-size: 14px;
+          font-size: 16px;
           letter-spacing: 0.025rem;
+          text-transform: uppercase;
         }
 
         .list-description {
           margin-top: 15px;
           color: #5f5f5f;
-          font-size: 12px;
+          font-size: 14px;
           font-weight: 500;
           line-height: 1.4;
           letter-spacing: 0.015rem;
         }
       }
     }//end of .team
-
-    .category {
-      @include flexbox;
-      @include justify-content(center);
-      position: absolute;
-      bottom: 30px;
-      width: 1100px;
-
-      .category-list {
-        display: inline-block;
-        margin-left: 24px;
-
-        &:first-child {
-          margin-left: 0;
-        }
-
-        & > a {
-          color: #c2c2c2;
-          font-weight: 500;
-        }
-      }
-    }
 
   }//end of .section-contents
 }

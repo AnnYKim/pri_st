@@ -58,7 +58,8 @@ label {
     position: relative;
     //overflow-x: hidden;
     width: 100%; 
-    height: 100vh; //우선은 100vh. 고정값 1080으로 갈지는 나중에 확인
+    //height: 100vh; //우선은 100vh. 고정값 1080으로 갈지는 나중에 확인
+    height: 1080px;
     margin: 0 auto;
     min-height: 680px;
     max-height: 1080px;
@@ -76,3 +77,14 @@ label {
       flex-basis: 50%;
     }
   }
+
+//   .item-fade {
+//       opacity: 0;
+//       transform: translateY(10px);
+//   }
+
+//   .reveal {
+//       opacity: 1;
+//       transform: translateY(0px);
+//       @include fadeIn();
+//   }

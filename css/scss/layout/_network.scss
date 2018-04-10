@@ -59,7 +59,7 @@
 
   .container-right {
     position: relative;
-    z-index: 1;
+    z-index: 2;
 
     .section-description {
       @include flexbox;
@@ -86,12 +86,39 @@
   .bg-network {
     pointer-events: none;
     position: absolute;
+    z-index: 1;
     top: 0;
     right: 0;
     width: 50%;
     height: 100%;
     background-color: rgba(0,0,0,0.1);
   }
+
+  .deco-line-1 {
+    // display: none;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 447px;
+    height: 436px;
+    margin-left: -378px;
+    background-size: 100%;
+    background-image: url(#{$path-image}deco-line-network.png);
+  }
+
+  .deco-line-2 {
+    // display: none;
+    position: absolute;
+    bottom: 100px;
+    left: 50%;
+    width: 447px;
+    height: 436px;
+    margin-left: -840px;
+    background-position: 50% 0;
+    background-size: 100%;
+    background-image: url(#{$path-image}deco-line-network-2.png);
+  }
+  
   
   
 }
