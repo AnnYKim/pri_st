@@ -21,14 +21,14 @@
       z-index: 1;
       position: absolute;
       top: 50%;
-      left: 12px;
+      left: 17px;
       transform: translateY(-50%);
-      margin-top: 20px;
+      margin-top: -8px;
 
       .section-title-main {
         width: 246px;
         height: 120px;
-        margin-bottom: 48px;
+        margin-bottom: 20px;
         @include text-hidden;
         background-size: 100%;
         background-repeat: no-repeat;
@@ -36,8 +36,8 @@
       }
 
       .section-title-sub {
-        font-size: 19px;
-        line-height: 1.7;
+        font-size: 20px;
+        line-height: 1.45;
       }
 
     }//end of .section-title
@@ -100,8 +100,8 @@
     top: 0;
     left: 50%;
     width: 447px;
-    height: 436px;
-    margin-left: -378px;
+    height: 420px;
+    margin-left: -386px;
     background-size: 100%;
     background-image: url(#{$path-image}deco-line-network.png);
   }
@@ -109,13 +109,14 @@
   .deco-line-2 {
     // display: none;
     position: absolute;
-    bottom: 100px;
+    bottom: 0px;
     left: 50%;
-    width: 447px;
-    height: 436px;
-    margin-left: -840px;
+    width: 555px;
+    height: 542px;
+    margin-left: -860px;
     background-position: 50% 0;
     background-size: 100%;
+    background-repeat: no-repeat;
     background-image: url(#{$path-image}deco-line-network-2.png);
   }
   

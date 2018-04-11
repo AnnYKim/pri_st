@@ -57,10 +57,23 @@
    </div>
 </div>
 <!-- //end of #modal -->
+
+  <header class="header">
+    <div class="grid">
+    <h1 class="header-logo"><a href="#">STAYGE One</a></h1>
+    <ul class="gnb clearfix">
+      <li class="nav-01"><a href="#">network</a></li>
+      <li class="nav-02"><a href="#">model</a></li>
+      <li class="nav-03"><a href="#">team</a></li>
+      <li class="nav-04"><a href="#">roadmap</a></li>
+    </ul>
+    </div>
+  </header>
+  <!-- end of .header -->
    
-    <header class="header">
-        <h1 class="logo-symbol">STAYGE One</h1>
-    </header>
+    <div class="logo">
+        <p class="logo-symbol">STAYGE One Logo</p>
+    </div>
 
     <section class="section main" role="main">
       <div class="grid">
@@ -149,21 +162,23 @@
 
     <section class="section team">
       <div class="grid" id="test">
-        <div class="section-title">
-          <h2 class="section-title-main">Team</h2>
-          <p class="section-title-sub"><small>STAYGE One은 엔터테인먼트와 IT 양 산업에 대한 깊은 이해와 <br>ICO 진행 및 블록체인 네트워크 개발에 경험이 있는 전문가로 구성되어 있습니다.</small></p>
-        </div>
-        <div class="section-contents">
+        <div class="fade-sec3-text">
+          <div class="section-title">
+            <h2 class="section-title-main">Team</h2>
+            <p class="section-title-sub"><small>STAYGE One은 엔터테인먼트와 IT 양 산업에 대한 깊은 이해와 <br>ICO 진행 및 블록체인 네트워크 개발에 경험이 있는 전문가로 구성되어 있습니다.</small></p>
+          </div>
           <ul class="category">
             <li class="category-list">
-              <a href="#">STAYGE Labs Team</a>
+              <span>STAYGE Labs Team</span>
             </li>
-            <li class="category-list"><a href="#">Advisors</a></li>
+            <li class="category-list"><span>Advisors</span></li>
             <li class="category-list">
-              <a href="#">Partnership Team</a>
+              <span>Partnership Team</span>
             </li>
           </ul>
-          <!-- end of .category -->
+        </div>
+        <!-- end of .category -->
+        <div class="section-contents">
           <ul class="team" id="team">
             <li class="team-list team-nassun fade-sec3-num1">
               <strong class="list-title">NASSUN</strong>
@@ -354,55 +369,6 @@
     });
 
   });
-  
-  
-
-
-  $(function(){
-
-    var $modal = $(".modal");
-    var $modalDim = $(".dim");
-
-
-    function openPopup() { //모달창 열기
-        $modalDim.fadeIn(500,function(){
-            $modal.fadeIn();
-        });
-        $("body").css('top', -(document.documentElement.scrollTop) + 'px')
-             .addClass("noScroll");
-    }
-
-    function closePopup() { //모달창 닫기
-      $modalDim.fadeOut();
-      $("body").removeAttr("style").removeClass("noScroll");
-    }
-
-      $("#pager").on('click',function(evt){
-           evt.preventDefault();
-           openPopup();
-      });
-
-
-      $(".modal-close").on("click",function(evt){ //닫기 버튼으로 닫기
-           evt.preventDefault();
-           closePopup();
-
-      });
-
-      $modalDim.on("click",function(){ //dim 눌러 닫기
-          if($modal.is(":visible")){
-           closePopup();
-          }	
-      });
-
-
-      $modal.find(".modal-container").on("click",function(evt){ //버블링 방지
-          evt.stopPropagation();
-      });
-
-
-
-  });  
 
 </script>
 </body>
