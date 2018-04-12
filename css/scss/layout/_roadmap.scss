@@ -112,7 +112,8 @@
 
         &:before {
           transform: scale(2);
-          background-color: rgba(255, 211, 211, 0.8);
+          //background-color: rgba(255, 211, 211, 0.8);
+          background-color: #ffbebf;
           transition: transform .3s, opacity .3s;
           animation: circle 1.5s infinite;
         }

@@ -55,6 +55,13 @@ label {
 .noScroll {
     height: 100%;
     overflow: hidden;
+
+    .header {
+        position: fixed;
+    }
+    .header-container {
+        margin-right: 15px;
+    }
 }
 
 
@@ -82,13 +89,126 @@ label {
     }
   }
 
-//   .item-fade {
-//       opacity: 0;
-//       transform: translateY(10px);
-//   }
 
-//   .reveal {
-//       opacity: 1;
-//       transform: translateY(0px);
-//       @include fadeIn();
-//   }
+  .wrap {
+    position: relative;
+    height: 100%;
+    min-width: 1300px !important; /* 반응형 임시로 막음 */
+    //overflow-y: auto;
+    margin: 0 auto;
+    background-color: #000;
+  }
+  
+  .header {
+
+    $header-pedding: 50px;
+
+    z-index: 10;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 90px;
+    background-color: rgba(0,0,0,0.5);
+  
+    &.sticky {
+      position: fixed;
+      top: -90px;
+      transition: margin .5s;
+    }
+
+    .grid {
+        position: relative;
+        //max-width: 1400px;
+        max-width: 1920px;
+        min-width: 1300px !important;  /* 반응형 임시로 막음 */
+    }
+  
+    .header-logo {
+      position: absolute;
+      top: 50%;
+      left: $header-pedding;
+      width: 172px;
+      height: 40px;
+      text-indent: -999px;
+      transform: translateY(-50%);
+      background-repeat: no-repeat;
+      background-size: 100%;
+      background-position: 50% 50%;
+      background-image: url(#{$path-image}logo-header.png);
+  
+      a {
+        @include block-anchor;
+      }
+    }
+
+    .header-container {
+        @include flexbox;
+        @include justify-content(space-between);
+        position: absolute;
+        top: 50%;
+        right: $header-pedding;
+        transform: translateY(-50%);
+        width: 910px; //임시
+
+        li {
+            cursor: pointer;
+        }
+
+        li > * {
+            text-transform: capitalize;
+            font-size: 15px;
+            font-weight: 500;
+            letter-spacing: 0.02rem;
+            cursor: pointer;
+        }
+
+        li:hover > * {
+            
+            color: rgba(234,34,27,1);
+        }
+    }
+  
+    .gnb {
+      @include flexbox;
+  
+      li {
+        margin-left: 45px;
+  
+        &:first-child {
+          margin-left: 0;
+        }
+      }
+    }//end of .gnb
+
+    .utils { //로그인 & 회원가입
+
+        visibility: hidden; //임시
+
+        @include flexbox;
+
+        li {
+            position: relative;
+            margin-left: 50px;
+
+            &:before {
+              position: absolute;
+              top: 2px;
+              left: -25px;
+              display: block;
+              width: 1px;
+              height: 15px;
+              content: '';
+              background-color: #d1d1d1;
+            }
+      
+            &:first-child {
+              margin-left: 0;
+              &:before {
+                display: none;
+              }
+            }
+        }
+    }
+  } //end of .header
+  
+  

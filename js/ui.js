@@ -1,57 +1,59 @@
-$(function(){
-  window.sr = ScrollReveal();
 
-  sr.reveal('.fade-sec1-tit',{
-                origin: 'left',
-                opacity: 0,
-                scale: 1,
-                duration: 850,
-                //reset: true,
-              }
-            );
-  sr.reveal('.fade-sec1-desc', {
-                delay: 750,
-                opacity: 0,
-                scale: 1,
-                duration: 730,
-                //reset: true,
-              },620
-            );
-  sr.reveal('.fade-sec2-pic', {
-                distance: '350px',
-                opacity: 0,
-                scale: 1,
-                duration: 690,
-              }
-            );
-  sr.reveal('.fade-sec2-tit', {
-                delay: 620,
-                opacity: 0,
-                scale: 1,
-                duration: 600,
-              }
-            );
-  sr.reveal('.fade-sec2-desc', {
-                delay: 1100,
-                opacity: 0,
-                scale: 1,
-                duration: 700,
-              }
-            );
-  sr.reveal('.fade-sec3-text', {
-                opacity: 0,
-                scale: 1,
-                duration: 600,
-              }
-            );
-  sr.reveal('#team', {
-                delay: 300,
-                distance: '100px',
-                opacity: 0,
-                scale: 1,
-                duration: 600,
-              }
-            );
+//scroll reveal event
+$(function(){
+  $(window).on("load",function(){
+
+    window.sr = ScrollReveal();
+
+    sr.reveal('.fade-sec1-tit',{
+        origin: 'left',
+        opacity: 0,
+        scale: 1,
+        duration: 850,
+      }
+    );
+    sr.reveal('.fade-sec1-desc', {
+        delay: 750,
+        opacity: 0,
+        scale: 1,
+        duration: 730,
+      },620
+    );
+    sr.reveal('.fade-sec2-pic', {
+        distance: '350px',
+        opacity: 0,
+        scale: 1,
+        duration: 690,
+      }
+    );
+    sr.reveal('.fade-sec2-tit', {
+        delay: 620,
+        opacity: 0,
+        scale: 1,
+        duration: 600,
+      }
+    );
+    sr.reveal('.fade-sec2-desc', {
+        delay: 1100,
+        opacity: 0,
+        scale: 1,
+        duration: 700,
+      }
+    );
+    sr.reveal('.fade-sec3-text', {
+        opacity: 0,
+        scale: 1,
+        duration: 600,
+      }
+    );
+    sr.reveal('#team', {
+        delay: 300,
+        distance: '100px',
+        opacity: 0,
+        scale: 1,
+        duration: 600,
+      }
+    );
     sr.reveal('.fade-sec4-list', {
         opacity: 0,
         scale: 1,
@@ -60,52 +62,12 @@ $(function(){
       }, 650
     );
 
-
-  // var goalNum = [];
-
-  // function generateRandom(max){
-  //   return Math.floor(Math.random()*max);
-  // }
-
-  // function generateGoalNumber(){
-  //   for(var i=0; i<8; i++){
-  //     goalNum[i] = generateRandom(8);
-
-  //     for (var j = 0; j<i; j++) {
-  //       if(goalNum[i] == goalNum[j]){
-  //         i = i - 1; 
-  //         break;
-  //       }
-  //     }
-  //   }
-  // }
-
-  // generateGoalNumber();
-  //console.log(goalNum);
-  
-  // for (var i=0; i<=7; i++){
-  //   sr.reveal('.fade-sec3-num'+goalNum[i], {
-  //       distance: '120px',
-  //       opacity: 0,
-  //       scale: 1,
-  //       //container: '#team',
-  //       //viewFactor: 0.9,
-  //       viewport: document.getElementById('team'),
-  //       viewFactor: 0.1,
-  //       duration: 600,
-  //       delay: (i*300),
-  //       useDelay: 'once',
-  //       easing: 'cubic-bezier(0.23, 1, 0.32, 1)',
-  //     }
-  //   );
-  // }
-
-
+  });
 });
 
 
+// modal evnet
 $(function(){
-
   
   var $modal = $(".modal");
   var $modalDim = $(".dim");
@@ -114,7 +76,6 @@ $(function(){
     document.body.style.overflow='hidden';var width=document.body.clientWidth;document.body.style.overflow='scroll';width-=document.body.clientWidth;if(!width)width=document.body.offsetWidth-document.body.clientWidth;document.body.style.overflow='';return width;
   }
 
-
   function openPopup() { //모달창 열기
       $modalDim.fadeIn(500,function(){
           $modal.fadeIn();
@@ -122,17 +83,17 @@ $(function(){
       $("body").css({"margin-right":scrollBarWidth()}).addClass("noScroll");
       
   }
-
   function closePopup() { //모달창 닫기
     $modalDim.fadeOut();
-    $("body").removeAttr("style").removeClass("noScroll");
+    setTimeout(function(){
+      $("body").removeAttr("style").removeClass("noScroll");
+    },400);
 }
           
   $("#pager").on('click',function(evt){
         evt.preventDefault();
         openPopup();
   });
-
 
   $(".modal-close").on("click",function(evt){ //닫기 버튼으로 닫기
         evt.preventDefault();
@@ -146,9 +107,75 @@ $(function(){
       }	
   });
 
-
   $modal.find(".modal-container").on("click",function(evt){ //버블링 방지
       evt.stopPropagation();
+  });
+
+});
+
+
+//header event
+$(function(){
+
+  var sectionTop = []; //각 section의 위치
+  var headerHeight = 90; //header의 높이 (PC = 80)
+  var headerMenuLength = 3; //클릭 시 이동하는 메뉴의 개수
+  
+  
+  function getSectionTop(){ //각 section의 위치 구하는 함수
+    $(".section").each(function(idx) {
+        sectionTop[idx] = Math.ceil($(this).offset().top);
+    });
+  }
+
+  function scroll(where){
+    $("html,body").stop().animate({
+      scrollTop: where
+    },800);
+  }
+
+  function headerFunc(){ //헤더 링크 클릭 시 해당 섹션으로 이동
+    $(".gnb li .nav-menu").on('click',function(e){
+      e.preventDefault();
+      var idx = $(".gnb li .nav-menu").index($(this));
+      var position = (sectionTop[idx+1] - headerHeight);
+
+
+      if (idx === 4){
+        return false;
+      }
+      
+      scroll(position);
+      
+    });
+  }
+
+  function makeHeaderSticky(){
+    if ($(window).scrollTop() >= sectionTop[1] - headerHeight ) {
+      $('.header').addClass('sticky').css({marginTop: headerHeight});
+   }
+   else {
+      $('.header').removeClass('sticky').removeAttr('style');
+   }
+  }
+
+  function clickHeaderLogo(){
+    $("h1.header-logo").on("click",function(e){
+      e.preventDefault();
+      scroll(0);
+    });
+  }
+
+  $(window).on("load",function(){
+    getSectionTop();
+    headerFunc();
+    makeHeaderSticky();
+    clickHeaderLogo();
+
+    $(window).on("scroll",function(){
+      makeHeaderSticky();
+    });
+
   });
 
 

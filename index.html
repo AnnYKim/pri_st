@@ -12,7 +12,7 @@
     <meta property="og:description" content="A Blockchain Network for Artist-Fan Ecosystem." />
     <meta property="og:image" content="images/og-stayge.png" />
     
-    <link rel="stylesheet" href="css/style.css?ver=2" />
+    <link rel="stylesheet" href="css/style.css?ver=2.2" />
   	<link rel="shortcut icon" href="images/favicon.ico" />
   
     <title>STAYGE One</title>
@@ -60,13 +60,21 @@
 
   <header class="header">
     <div class="grid">
-    <h1 class="header-logo"><a href="#">STAYGE One</a></h1>
-    <ul class="gnb clearfix">
-      <li class="nav-01"><a href="#">network</a></li>
-      <li class="nav-02"><a href="#">model</a></li>
-      <li class="nav-03"><a href="#">team</a></li>
-      <li class="nav-04"><a href="#">roadmap</a></li>
-    </ul>
+      <h1 class="header-logo"><a href="#">STAYGE One</a></h1>
+      <div class="header-container">
+        <ul class="gnb clearfix">
+          <li class="nav-01"><div class="nav-menu">overview</div></li>
+          <li class="nav-02"><div class="nav-menu">system</div></li>
+          <li class="nav-03"><div class="nav-menu">team</div></li>
+          <li class="nav-04"><div class="nav-menu">roadmap</div></li>
+          <li class="nav-05"><div id="pager" class="nav-menu">one pager</div></li>
+          <li class="nav-06"><a href="#">white paper</a></li>
+        </ul>
+        <ul class="utils">
+          <li><div class="nav-menu">login</div></li>
+          <li><div class="nav-menu">register</div></li>
+        </ul>
+      </div>
     </div>
   </header>
   <!-- end of .header -->
@@ -104,7 +112,6 @@
               <p class="section-title-sub">
                 <small>STAYGE Network는 블록체인<br> 기반 아티스트-팬 생태계입니다.</small>
               </p>
-              <!-- line 필요! SVG로 넣을 수 있는지 알아볼 것 -->
             </div>
           </div>
           <div class="section-title-bg"></div>
@@ -144,16 +151,16 @@
         </div>
         <div class="section-description  fade fade-sec2-desc">
             <p>
-                STG (STAYGE Token)와 ACT (Activity Token)는 STAYGE Network 내에서 기여도에 따른 보상의 수단이자 가치 교환의 수단입니다.
+              STAYGE Network의 경제시스템은 스테이지 코인(STG)와 액티비티 토큰(ACT) 두 가지 암호화폐로 구성되어있습니다.
             </p>
             <p>
-                STG는 생태계 내의 기축 통화의 기능을 수행하고, 팬들은 아티스트 별로 생성된 커뮤니티에서의 활동을 통해 ACT를 지급 받습니다.
+              STG는 서로 다른 커뮤니티를 연결하는데 사용되는 수단이자 STAYGE Network 내의 기축통화 역할을 합니다. 네트워크 참여자는 STG로 STAYGE Network에 대한 의사 결정 참여, 프로젝트 지원, 상품의 구입, 아티스트 개런티 지불 등을 할 수 있으며, 거래소를 통해 구입하거나 네트워크에 기여한 보상으로 얻을 수 있습니다. 
             </p>
             <p>
-                ACT는 해당 커뮤니티의 각종 의사결정에 참여하거나 아티스트가 제공하는 다양한 상품과 콘텐츠를 구매하는 데 사용될 수 있습니다.
+              ACT는 커뮤니티별로 생성되어 팬의 기여도에 따라 지급되는 보상이자 거래수단입니다. 팬들은 커뮤니티 활동에 대한 보상으로 기여도에 따라 ACT를 받게 되며, 이를 사용하여 커뮤니티 의사결정 참여, 상품이나 티켓 구입, 디지털콘텐츠 소비 등을 할 수 있습니다.
             </p>
             <p>
-                아티스트는 가치 제공의 대가로 팬들로부터 벌어들인 ACT를 STG로 전환하여 수익을 실현할 수 있습니다.
+              STAYGE Network에서 제공하는 전환 시스템을 통해 ACT-STG 전환이 가능합니다.
             </p>
         </div>
       </div>
@@ -190,8 +197,8 @@
             <li class="team-list team-aaron  fade-sec3-num2">
               <strong class="list-title">Aaron Shin</strong>
               <p class="list-description">
-                Formation 8 Partners<br/>
-                Asia Investment Parter
+                Ascendo Ventures<br/>
+                Managing Partner
               </p>
             </li>
             <li class="team-list team-thomas fade-sec3-num3">
@@ -209,10 +216,10 @@
               </p>
             </li>
             <li class="team-list team-ducksoo fade-sec3-num5">
-              <strong class="list-title">Ducksoo Kim</strong>
+              <strong class="list-title">DS Kim</strong>
               <p class="list-description">
-                Cloudbric<br/>
-                Co-founder &amp; CTO
+                Pentasecurity System<br/>
+                CSO
               </p>
             </li>
             <li class="team-list team-yoonjin fade-sec3-num6">
@@ -333,9 +340,8 @@
  
     
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<!-- <script src="js/scrollreveal.min.js"></script> -->
-<script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
-<script src="js/ui.js"></script>
+<script src="js/scrollreveal.min.js"></script>
+<script src="js/ui.min.js"></script>
 <script>
 
   $(function(){
