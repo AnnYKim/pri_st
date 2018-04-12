@@ -30,17 +30,26 @@ label {
     display: none;
 }
 
-.br-pc {display: block;} //pc용 줄바꿈
+.br-pc-sm-only {display: none;}
+.br-pc-lg {display: block;}
+.br-pc {display: block;} //1080px 이상~
 .br-ta {display: none;} //태블릿용 줄바꿈
 .br-mo {display: none;} //모바일용 줄바꿈
 
+@include pc-sm {
+    .br-pc-sm-only {display: block;}
+    .br-pc-lg {display: none;}
+}
+
 @include tablet-lg {
     .br-pc {display: none;}
+    .br-pc-sm-only {display: none;}
     .br-ta {display: block;}
 }
 
 @include mobile {
     .br-ta {display: none;}
+    .br-pc-sm-only {display: none;}
     .br-mo {display: block;}
 }
 
@@ -69,38 +78,45 @@ label {
     position: relative;
     //overflow-x: hidden;
     width: 100%; 
-    //height: 100vh; //우선은 100vh. 고정값 1080으로 갈지는 나중에 확인
     height: 1080px;
     margin: 0 auto;
     min-height: 680px;
     max-height: 1080px;
     margin: 0 auto;
-    //background-image: url(../images/bg-main.png);
     background-repeat: no-repeat;
     background-position: 50% 50%;
     background-size: cover;
-    
-    .container-left {
-      flex-basis: 50%;
+
+    // ** 반응형
+    @include pc-sm {
+        height: 980px;
+        outline: 6px dashed red;
     }
-    
-    .container-right {
-      flex-basis: 50%;
+    @include tablet-lg {
+        height: 880px;
+        outline: 6px dashed orange;
     }
+    @include tablet {
+        //height: 840px;
+        outline: 6px dashed green;
+    }
+    @include mobile {
+        height: auto;
+        min-height: 100%;
+        outline: 6px dashed blue;
+    }
+
   }
 
 
   .wrap {
     position: relative;
     height: 100%;
-    min-width: 1300px !important; /* 반응형 임시로 막음 */
-    //overflow-y: auto;
     margin: 0 auto;
     background-color: #000;
   }
   
   .header {
-
     $header-pedding: 50px;
 
     z-index: 10;
@@ -163,7 +179,6 @@ label {
         }
 
         li:hover > * {
-            
             color: rgba(234,34,27,1);
         }
     }
@@ -183,7 +198,6 @@ label {
     .utils { //로그인 & 회원가입
 
         visibility: hidden; //임시
-
         @include flexbox;
 
         li {
@@ -203,6 +217,7 @@ label {
       
             &:first-child {
               margin-left: 0;
+
               &:before {
                 display: none;
               }

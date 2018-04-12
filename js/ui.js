@@ -66,6 +66,11 @@ $(function(){
 });
 
 
+
+/* **************** */
+
+
+
 // modal evnet
 $(function(){
   
@@ -112,6 +117,61 @@ $(function(){
   });
 
 });
+
+
+/* **************** */
+
+
+
+//detect responsive
+
+var breakPoint = [640, 768, 1024, 1200];
+    
+function isSmallScreen(){
+  if ($(window).width() < breakPoint[1]) {
+    $("body").addClass('screen-small');
+    $('.header').removeClass('sticky').removeAttr('style');
+  }else{
+    $("body").removeClass('screen-small');
+  }
+}
+
+function alertMySize(){
+  $(".width").text($(window).width());
+  if($(window).width()<breakPoint[0]){
+    $(".size").text("모바일")
+  }
+  if($(window).width()>breakPoint[0]){
+    $(".size").text("태블릿 (작음)")
+  }
+  if($(window).width()>breakPoint[1]){
+    $(".size").text("태블릿 (큼)")
+  }
+  if($(window).width()>breakPoint[2]){
+    $(".size").text("PC (작음)")
+  }
+  if($(window).width()>breakPoint[3]){
+    $(".size").text("PC (큼)")
+  }
+}
+
+
+$(window).on('load',function(){
+  isSmallScreen();
+  alertMySize();
+});
+
+
+$(window).on('resize',function(){
+  //윈도 사이즈가 조절될 때마다 모바일 판단 / section 위치 구함
+  isSmallScreen();
+  alertMySize();
+});
+
+
+
+/* **************** */
+
 
 
 //header event
