@@ -231,6 +231,7 @@ $(function(){
     headerFunc();
     makeHeaderSticky();
     clickHeaderLogo();
+    $(".loading").hide();
 
     $(window).on("scroll",function(){
       makeHeaderSticky();
@@ -240,3 +241,5 @@ $(function(){
 
 
 });
+
+

@@ -5,8 +5,16 @@
 *   SECTION(3)
 */
 
+
 .section.model {
   background-color: #ffeaea;
+
+  // ** 반응형
+  @include pc-sm {
+    height: auto;
+    max-height: none;
+  }
+
 
   .token-container {
     overflow: hidden;
@@ -17,8 +25,12 @@
 
     // ** 반응형
     @include pc-sm {
-      padding-top: 140px;
-      padding-bottom: 100px;
+      padding-top: 120px;
+      padding-bottom: $responsive-grid-pc-sm;
+    }
+    @include tablet {
+      padding-top: ($responsive-grid-tablet + 20);
+      padding-bottom: $responsive-grid-tablet;
     }
   }
 
@@ -40,6 +52,12 @@
       background-position: 50% 50%;
       background-size: contain;
     }
+    @include mobile {
+      background-image: url(#{$path-image}bg-mo-token.png);
+      padding-top: 54%;
+      background-position: 60% 50%;
+      background-size: contain;
+    }
 
     & > p {
       visibility: hidden;
@@ -58,8 +76,14 @@
     // ** 반응형
     @include pc-sm {
       flex-direction: column;
-      margin-top: 80px;
+      margin-top: 0;
+      padding-top: $responsive-grid-pc-sm;
+      padding-bottom: $responsive-grid-pc-sm;
       width: 100%;
+    }
+    @include tablet {
+      padding-top: $responsive-grid-tablet;
+      padding-bottom: ($responsive-grid-tablet + 20);
     }
   }
 
@@ -71,7 +95,10 @@
      @include pc-sm {
        height: 56px;
        margin-right: 0;
-       margin-bottom: 80px;
+       margin-bottom: $responsive-grid-pc-sm;
+     }
+     @include tablet {
+       margin-bottom: $responsive-grid-tablet;
      }
 
     .section-title-main {
@@ -89,6 +116,10 @@
         height: 56px;
         margin: 0 auto;
         background-image: url(#{$path-image}title-mo-token.png);
+      }
+      @include mobile {
+        width: 240px;
+        height: 49px;
       }
 
     }
@@ -113,6 +144,12 @@
       max-width: 90%;
       margin: 0 auto;
     }
+    @include tablet {
+      max-width: 100%;
+      -moz-column-count: 1;
+      -webkit-column-count: 1;
+      column-count: 1;
+    }
 
     p {
       width: 330px;
@@ -127,12 +164,24 @@
       // ** 반응형
       @include pc-sm {
         width: 95%;
+        word-break: break-all;
 
         &:nth-child(3),
         &:nth-child(4) {
           margin-right: 0;
           margin-left: 22px;
         }
+      }
+      @include tablet {
+        margin-top: 24px;
+        &:last-child {
+          margin-top: 22px;
+        }
+      }
+      @include mobile {
+        width: 100%;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
       }
 
       &:first-child {
