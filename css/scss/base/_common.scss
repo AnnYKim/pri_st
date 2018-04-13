@@ -34,6 +34,7 @@ label {
 .br-pc-sm-only {display: none;}
 .br-pc-lg {display: block;}
 .br-pc {display: block;} //1080px 이상~
+.br-ta-lg {display: none;} //태블릿용(큼) 줄바꿈
 .br-ta {display: none;} //태블릿용 줄바꿈
 .br-mo {display: none;} //모바일용 줄바꿈
 
@@ -45,12 +46,19 @@ label {
 @include tablet-lg {
     .br-pc {display: none;}
     .br-pc-sm-only {display: none;}
+    .br-ta-lg {display: block;}
+}
+
+@include tablet {
+    .br-ta-lg {display: block;}
+    .br-pc-sm-only {display: none;}
     .br-ta {display: block;}
+
 }
 
 @include mobile {
-    .br-ta {display: none;}
     .br-pc-sm-only {display: none;}
+    .br-ta {display: none;}
     .br-mo {display: block;}
 }
 

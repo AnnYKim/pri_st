@@ -12,10 +12,20 @@
 
   // ** 반응형
   @include pc-sm {
-    padding-top: 120px;
+    padding-top: ($responsive-grid-pc-sm + 20);
+    padding-bottom: ($responsive-grid-pc-sm - 0);
     height: auto;
     max-height: none;
   }
+  @include tablet-lg {
+    padding-top: ($responsive-grid-tablet + 20);
+    padding-bottom: ($responsive-grid-tablet - 0);
+  }
+  @include tablet {
+    padding-top: ($responsive-grid-tablet + 20);
+    padding-bottom: ($responsive-grid-tablet + 20);
+  }
+
 
   .grid {
     position: relative;
@@ -40,11 +50,21 @@
       font-size: 24px;
       font-weight: 500;
       line-height: 1.55;
+      word-break: keep-all;
       
       // ** 반응형
       @include pc-sm {
         font-size: 22px;
         line-height: 1.4;
+      }
+      @include tablet-lg {
+        font-size: 21px;
+      }
+      @include tablet {
+        font-size: 22px;
+      }
+      @include mobile {
+        font-size: 19px;
       }
     }
   }//end of .section-title
@@ -58,12 +78,22 @@
       
     // ** 반응형
     @include pc-sm {
-      margin-top: 36px;
+      margin-top: 40px;
+    }
+    @include tablet-lg {
+      margin-top: 30px;
+    }
+    @include mobile-sm {
+     // @include justify-content(space-between);
     }
 
     .category-list {
       position: relative;
       margin-left: 24px;
+
+      @include mobile {
+        margin-left: 16px;
+      }
 
       &:before {
         position: absolute;
@@ -74,6 +104,17 @@
         height: 15px;
         content: '';
         background-color: #d1d1d1;
+
+        @include mobile {
+          top: 4px;
+          left: -9px;
+          height: 14px;
+        }
+
+        @include mobile-sm {
+          top: 5px;
+          height: 12px;
+        }
       }
 
       &:first-child {
@@ -93,6 +134,18 @@
         @include pc-sm {
           font-size: 15px;
         }
+        @include tablet-lg {
+          font-size: 14px;
+        }
+        @include tablet {
+          font-size: 15px;
+        }
+        @include mobile {
+          font-size: 11px;
+        }
+        @include mobile-sm {
+          font-size: 10px;
+        }
       }
     }
   }//end of .category
@@ -101,13 +154,21 @@
 
     .team {
       position: relative;
-      //@include flexbox;
       margin-top: 30px;
       height: 550px;
 
       // ** 반응형
       @include pc-sm {
+        margin-top: 40px;
         height: auto;
+        @include flexbox;
+        @include flex-wrap(wrap);
+        @include justify-content(center);
+      }
+      @include tablet {
+          margin-top: 30px;
+          @include justify-content(flex-start);
+          //display: block !important;
       }
 
       //각 팀원 프로필 사진
@@ -137,7 +198,25 @@
           left: 0 !important;
           right: 0 !important;
           bottom: 0 !important;
-          margin: 0 !important;
+          margin-left: 0 !important;
+          flex-basis: 25%;
+          padding-left: 6%;
+          margin-top: 46px;
+          box-sizing: border-box;
+        }
+        @include tablet-lg {
+          margin-top: 50px;
+          padding-left: 5.5%;
+        }
+        @include tablet {
+          flex-basis: 50%;
+          padding-left: 15%;
+        }
+        @include mobile {
+          padding-left: 10%;
+        }
+        @include mobile-sm {
+          padding-left: 5%;
         }
   
 
@@ -192,6 +271,25 @@
           background-image: url(#{$path-image}pic-team.png);
           border-radius: 50%;
           box-shadow: 9px 0 60px -8px rgba(156,156,156,0.5);
+
+          // ** 반응형
+          @include pc-sm {
+            width: 100px;
+            height: 100px;
+          }
+          @include tablet-lg {
+            width: 90px;
+            height: 90px;
+            margin-bottom: 20px;
+          }
+          @include tablet {
+            width: 110px;
+            height: 110px;
+          }
+          @include mobile {
+            width: 100px;
+            height: 100px;
+          }
         }
 
         .list-title {
@@ -200,6 +298,20 @@
           font-size: 16px;
           letter-spacing: 0.025rem;
           text-transform: uppercase;
+
+          // ** 반응형
+          @include pc-sm {
+            font-size: 15px;
+          }
+          @include tablet-lg {
+            font-size: 14px;
+          }
+          @include tablet {
+            font-size: 15px;
+          }
+          @include mobile {
+            font-size: 14px;
+          }
         }
 
         .list-description {
@@ -209,6 +321,23 @@
           font-weight: 500;
           line-height: 1.4;
           letter-spacing: 0.015rem;
+
+          // ** 반응형
+          @include pc-sm {
+            font-size: 13px;
+          }
+          @include tablet-lg {
+            margin-top: 10px;
+            font-size: 12px;
+          }
+          @include tablet {
+            margin-top: 15px;
+            font-size: 13px;
+          }
+          @include mobile {
+            margin-top: 10px;
+            font-size: 12px;
+          }
         }
       }
     }//end of .team

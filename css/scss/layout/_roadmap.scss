@@ -5,6 +5,7 @@
 *   SECTION(5)
 */
 .section.roadmap {
+  overflow: hidden;
   background-color: #f6f6f6;
   background-position: 50% 50%;
   background-size: initial;
@@ -72,6 +73,10 @@
         top: 364px;
         left: 50%;
         margin-left: 276px;
+
+        @include pc-sm {
+          margin-left: 240px;
+        }
 
         .goal-year {
           background-image: url(#{$path-image}title-2019.png);
