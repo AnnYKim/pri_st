@@ -11,14 +11,38 @@
   background-size: initial;
   background-image: url(#{$path-image}bg-roadmap.png);
 
+  @include tablet-lg {
+    background-position: 50% 85%;
+    background-image: url(#{$path-image}bg-ta-roadmap.png); 
+  }
+
+  @include mobile {
+    height: 0;
+    background-position: 0% 150%;
+    background-image: url(#{$path-image}bg-mo-roadmap.png); 
+  }
+
   .grid {
     position: relative;
+    height: 100%;
   }
 
   .section-title {
     position: absolute;
     top: 15vh;
-    left: 0;
+    left: 20px;
+
+    @include pc-sm {
+      top: 10vh;
+      left: 60px;
+    }
+    @include tablet {
+      left: 40px;
+    }
+    @include mobile {
+      left: 50%;
+      transform: translateX(-50%);
+    }
 
     .section-title-main {
       width: 230px;
@@ -27,6 +51,16 @@
       background-size: 100%;
       background-repeat: no-repeat;
       background-image: url(#{$path-image}title-roadmap.png);
+
+      @include pc-sm {
+        width: 222px;
+        height: 88px;
+      }
+      @include mobile {
+        width: 202px;
+        height: 80px;
+        background-image: url(#{$path-image}title-mo-roadmap.png);
+      }
     }
 
     .section-title-sub {
@@ -34,12 +68,22 @@
       font-size: 19px;
       color: #000;
       font-weight: 600;
+
+      @include pc-sm {
+        margin-top: 23px;
+        font-size: 18px;
+      }
+      @include mobile {
+        margin-top: 18px;
+        text-align: center;
+      }
     }
     
   }//end of .section-title
 
 
   .section-contents {
+    height: 100%;
 
     .section-contents-bg {
       display: none;
@@ -64,6 +108,24 @@
         left: 50%;
         margin-left: -15px;
 
+        @include pc-sm {
+          top: 135px;
+        }
+        @include tablet-lg {
+          top: initial;
+          bottom: 240px;
+          left: 80px;
+          margin-left: 0;
+        }
+        @include tablet {
+          left: 50px;
+          bottom: 230px;
+        }
+        @include mobile {
+          left: 30px;
+          top: 280px;
+        }
+
         .goal-year {
           background-image: url(#{$path-image}title-2018.png);
         }
@@ -74,9 +136,29 @@
         left: 50%;
         margin-left: 276px;
 
-        @include pc-sm {
-          margin-left: 240px;
+        @include pc-md {
+          margin-left: 216px;
         }
+
+        @include pc-sm {
+          margin-left: 184px;
+        }
+        @include tablet-lg {
+          top: initial;
+          bottom: 210px;
+          margin-left: 80px;
+        }
+        @include tablet {
+          left: initial;
+          right: 50px;
+          bottom: 201px;
+        }
+        @include mobile {
+          left: 30px;
+          top: 434px;
+          margin-left: 0;
+        }
+
 
         .goal-year {
           background-image: url(#{$path-image}title-2019.png);
@@ -87,6 +169,26 @@
         top: 670px;
         left: 50%;
         margin-left: 198px;
+
+        @include pc-sm {
+          top: 652px;
+          margin-left: 170px;
+        }
+        @include tablet-lg {
+          top: initial;
+          bottom: 80px;
+          left: 80px;
+          margin-left: 0;
+        }
+        @include tablet {
+          left: 50px;
+          bottom: 70px;
+        }
+        @include mobile {
+          left: 30px;
+          top: 610px;
+        }
+
 
         .goal-year {
           background-image: url(#{$path-image}title-2020.png);
@@ -104,6 +206,16 @@
         background-size: 100%;
         background-repeat: no-repeat;
 
+        @include pc-sm {
+          width: 53px;
+          height: 17px;
+          margin-left: 30px;
+        }
+        @include mobile {
+          width: 47px;
+          height: 15px;
+        }
+
         &:before,
         &:after {
           position: absolute;
@@ -113,6 +225,11 @@
           height: 10px;
           content: '';
           border-radius: 50%;
+
+          @include pc-sm {
+            width: 8px;
+            height: 8px;
+          }
         }
 
         &:before {
@@ -130,17 +247,43 @@
 
       .goal {
         margin-left: 40px;
+
+        @include pc-sm {
+          margin-left: 30px;
+        }
+
+        @include tablet-lg {
+          //margin-left: 20px;
+        }
       }
 
       .goal-list {
         display: flex;
         margin-top: 10px;
 
+        @include mobile {
+          margin-top: 8px;
+        }
+
         strong {
           margin-right: 20px;
           font-weight: 700;
           color: $black;
           vertical-align: top;
+
+          @include pc-md {
+            font-size: 15px;
+          }
+          @include pc-sm {
+            font-size: 14px;
+            margin-right: 14px;
+          }
+          @include mobile {
+            font-size: 13px;
+          }
+          @include mobile {
+            margin-right: 12px;
+          }
         }
         p {
           margin-top: -2px;
@@ -148,6 +291,16 @@
           vertical-align: text-top;
           line-height: 1.5;
           font-weight: 500;
+
+          @include pc-md {
+            font-size: 15px;
+          }
+          @include pc-sm {
+            font-size: 14px;
+          }
+          @include mobile {
+            font-size: 13;
+          }
         }
 
         &:first-child {
@@ -158,6 +311,24 @@
       @for $i from 1 through 5 {
         .goal-list:nth-child(#{$i}){
           margin-left: 40px * ($i - 1);
+        }
+      }
+
+      @include pc-sm {
+
+        @for $i from 1 through 5 {
+          .goal-list:nth-child(#{$i}){
+            margin-left: 30px * ($i - 1);
+          }
+        }
+
+      }
+
+      @include tablet-lg {
+        @for $i from 1 through 5 {
+          .goal-list:nth-child(#{$i}){
+            margin-left: 0px * ($i - 1);
+          }
         }
       }
 

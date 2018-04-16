@@ -2,7 +2,8 @@
 
 
 // Break Point 
-$desktop-md-width	: 1200px;
+$desktop-md-width	: 1400px;
+$desktop-sm-width	: 1200px;
 $tablet-lg-width	: 1024px;
 $tablet-width		: 768px;
 $mobile-width		: 640px;
@@ -12,14 +13,14 @@ $mobile-sm-width		: 340px;
 
 // PC (md)
 @mixin pc-md {
-	@media screen and (min-width: #{$desktop-md-width}) {
+	@media screen and (max-width: #{$desktop-md-width}) {
 		@content;
 	}
 }
  
 // PC (sm)
 @mixin pc-sm {
-	@media screen and (max-width: #{$desktop-md-width - 1}) {
+	@media screen and (max-width: #{$desktop-sm-width}) {
 		@content;
 	}
 } 
