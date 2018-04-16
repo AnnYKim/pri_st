@@ -70,6 +70,18 @@ $(function(){
 /* **************** */
 
 
+function preventScroll(){
+  $("body").css({"margin-right":scrollBarWidth()}).addClass("noScroll");
+}
+function allowScroll(){
+  $("body").removeAttr("style").removeClass("noScroll");
+}
+
+function scrollBarWidth() { //스크롤바 구하기
+  document.body.style.overflow='hidden';var width=document.body.clientWidth;document.body.style.overflow='scroll';width-=document.body.clientWidth;if(!width)width=document.body.offsetWidth-document.body.clientWidth;document.body.style.overflow='';return width;
+}
+
+
 
 // modal evnet
 $(function(){
@@ -77,21 +89,17 @@ $(function(){
   var $modal = $(".modal");
   var $modalDim = $(".dim");
 
-  function scrollBarWidth() { //스크롤바 구하기
-    document.body.style.overflow='hidden';var width=document.body.clientWidth;document.body.style.overflow='scroll';width-=document.body.clientWidth;if(!width)width=document.body.offsetWidth-document.body.clientWidth;document.body.style.overflow='';return width;
-  }
-
   function openPopup() { //모달창 열기
       $modalDim.fadeIn(500,function(){
           $modal.fadeIn();
       });
-      $("body").css({"margin-right":scrollBarWidth()}).addClass("noScroll");
+      preventScroll();
       
   }
   function closePopup() { //모달창 닫기
     $modalDim.fadeOut();
     setTimeout(function(){
-      $("body").removeAttr("style").removeClass("noScroll");
+      allowScroll();
     },400);
 }
           
@@ -123,18 +131,20 @@ $(function(){
 
 
 
-//detect responsive
+//detect responsive ---- 삭제 예정!
 
-var breakPoint = [640, 768, 1024, 1200];
-    
-function isSmallScreen(){
-  if ($(window).width() < breakPoint[1]) {
-    $("body").addClass('screen-small');
-    $('.header').removeClass('sticky').removeAttr('style');
-  }else{
-    $("body").removeClass('screen-small');
+  var breakPoint = [640, 768, 1024, 1200];
+
+  //모바일 판단
+  function isSmallScreen(){
+    if ($(window).width() < breakPoint[2]) {
+      $("body").addClass('screen-small');
+      $('.header').removeClass('sticky opened').removeAttr('style');
+    }else{
+      $("body").removeClass('screen-small');
+    }
   }
-}
+  
 
 function alertMySize(){
   $(".width").text($(window).width());
@@ -157,16 +167,9 @@ function alertMySize(){
 
 
 $(window).on('load',function(){
-  isSmallScreen();
   alertMySize();
 });
 
-
-$(window).on('resize',function(){
-  //윈도 사이즈가 조절될 때마다 모바일 판단 / section 위치 구함
-  isSmallScreen();
-  alertMySize();
-});
 
 
 
@@ -177,48 +180,71 @@ $(window).on('resize',function(){
 //header event
 $(function(){
 
+  //전역변수
+
   var sectionTop = []; //각 section의 위치
-  var headerHeight = 90; //header의 높이 (PC = 80)
+  var headerHeight = 90; //header의 높이 (PC = 90, mobile = 60)
   var headerMenuLength = 3; //클릭 시 이동하는 메뉴의 개수
-  
-  
-  function getSectionTop(){ //각 section의 위치 구하는 함수
+
+  var $body = $("html,body");
+  var $header = $(".header");
+  var $burger = $header.find(".hamburger");
+  var $navMenu = $(".gnb li .nav-menu");
+      
+
+  //각 section의 위치 구하는 함수
+  function getSectionTop(){
     $(".section").each(function(idx) {
         sectionTop[idx] = Math.ceil($(this).offset().top);
     });
   }
 
-  function scroll(where){
-    $("html,body").stop().animate({
+  //스크롤 함수
+  function scroll(where){ 
+    $body.stop().animate({
       scrollTop: where
     },800);
   }
 
-  function headerFunc(){ //헤더 링크 클릭 시 해당 섹션으로 이동
-    $(".gnb li .nav-menu").on('click',function(e){
+  //헤더 링크 클릭 시 해당 섹션으로 이동
+  function headerFunc(){ 
+    $navMenu.on('click',function(e){
       e.preventDefault();
-      var idx = $(".gnb li .nav-menu").index($(this));
+
+      $("body").hasClass("screen-small")? headerHeight = 60 : headerHeight = 90;
+
+      var idx = $navMenu.index($(this));
       var position = (sectionTop[idx+1] - headerHeight);
 
 
       if (idx === 4){
-        return false;
+        return false; //one pager 모달용
       }
-      
+
       scroll(position);
-      
+
+      if ($header.hasClass("opened")){
+        closeBurgerMenu();
+      }
     });
   }
 
+  //1섹션 이상 스크롤 시 헤더 고정
   function makeHeaderSticky(){
-    if ($(window).scrollTop() >= sectionTop[1] - headerHeight ) {
-      $('.header').addClass('sticky').css({marginTop: headerHeight});
+   
+
+    if(!$("body").hasClass("screen-small")){
+
+      if ($(window).scrollTop() >= sectionTop[1] - headerHeight ) {
+        $header.addClass('sticky').css({marginTop: headerHeight});
+      }else {
+        $header.removeClass('sticky').removeAttr('style');
+      }
    }
-   else {
-      $('.header').removeClass('sticky').removeAttr('style');
-   }
+
   }
 
+  //로고 클릭 시 맨 위로 이동
   function clickHeaderLogo(){
     $("h1.header-logo").on("click",function(e){
       e.preventDefault();
@@ -226,16 +252,66 @@ $(function(){
     });
   }
 
-  $(window).on("load",function(){
+  //버거 메뉴 오픈
+  function openBurgerMenu(){
+    $header.addClass("opened");
+    preventScroll();
+  }
+
+        
+  //버거 메뉴 클로즈
+  function closeBurgerMenu(){
+    $header.removeClass("opened");
+    allowScroll();
+  }
+
+
+  function initEvent(){
+
+    //모바일 크기 판단
+    isSmallScreen();
+
+    //섹션위치 구함
     getSectionTop();
+
+    //헤더 메뉴 클릭 시 이동
     headerFunc();
+
+    //헤더영역 고정
     makeHeaderSticky();
+
+    //로고 클릭 시 맨 위로
     clickHeaderLogo();
-    $(".loading").hide();
+
+    
+    //버거 토글
+    $burger.on('click',function(e){
+      e.preventDefault();
+      $header.hasClass('opened') ? closeBurgerMenu() : openBurgerMenu();
+    });
+
+
 
     $(window).on("scroll",function(){
       makeHeaderSticky();
     });
+
+    $(window).on('resize',function(){
+      isSmallScreen();
+      getSectionTop();
+      alertMySize();
+    });
+
+
+  }
+
+
+
+  $(window).on("load",function(){
+
+    initEvent();
+    //$(".loading").hide();
+    
 
   });
 

@@ -7,6 +7,7 @@
 
 
 .wrap {
+    //overflow-x: hidden;
     position: relative;
     width: 100%;
     height: 100%;
@@ -19,6 +20,7 @@
     padding: 0 20px;
     box-sizing: border-box;
     margin: 0 auto;
+
     @include mobile {
       padding: 0 20px;
     }
@@ -85,7 +87,6 @@ label {
 
 .section {
     position: relative;
-    //overflow-x: hidden;
     width: 100%; 
     height: 1080px;
     margin: 0 auto;
@@ -99,20 +100,16 @@ label {
     // ** 반응형
     @include pc-sm {
         height: 980px;
-        outline: 6px dashed red;
     }
     @include tablet-lg {
         height: 880px;
-        outline: 6px dashed orange;
     }
     @include tablet {
         //height: 840px;
-        outline: 6px dashed green;
     }
     @include mobile {
         height: auto;
         min-height: 100%;
-        outline: 6px dashed blue;
     }
 
   }
@@ -134,6 +131,13 @@ label {
     width: 100%;
     height: 90px;
     background-color: rgba(0,0,0,0.5);
+    transition: background-color 2ms;
+
+    @include tablet-lg {
+        position: fixed !important;
+        top: 0px !important;
+        height: 60px;
+    }
   
     &.sticky {
       position: fixed;
@@ -145,10 +149,12 @@ label {
         position: relative;
         //max-width: 1400px;
         max-width: 1920px;
-        min-width: 1300px !important;  /* 반응형 임시로 막음 */
+        width: 100%;
+        padding: 0;
     }
   
     .header-logo {
+      z-index: 20;
       position: absolute;
       top: 50%;
       left: $header-pedding;
@@ -164,8 +170,33 @@ label {
       a {
         @include block-anchor;
       }
+
+      @include pc-md {
+          left: 30px;
+          width: 154px;
+          height: 36px;
+      }
+      @include mobile {
+          left: 20px;
+          width: 120px;
+          height: 28px;
+      }
     }
 
+    .header-bg {
+        display: none;
+        transition: background-color 2ms;
+
+        @include tablet-lg {
+            display: block;
+            z-index: 15;
+            position: relative;
+            width: 100%;
+            height: 60px;
+        }
+
+
+    }
     .header-container {
         @include flexbox;
         @include justify-content(space-between);
@@ -173,10 +204,48 @@ label {
         top: 50%;
         right: $header-pedding;
         transform: translateY(-50%);
-        width: 910px; //임시
+        width: 910px;
+
+        @include pc-sm {
+            right: 40px;
+            width: 72vw;
+        }
+        @include tablet-lg {
+            z-index: 10;
+            @include flex-direction(column);
+            @include justify-content(flex-start);
+            position: absolute;
+            top: 60px;
+            left: 0;
+            right: initial;
+            width: 100%;
+            height: calc(100vh - 60px);
+            min-height: 600px;
+            padding: 0 20%;
+            box-sizing: border-box;
+            transform: translateY(-150%);
+            transition: transform .35s;
+            transition-delay: 8ms;
+            background-color: #000;
+        }
+        @include tablet {
+            min-height: 0px;
+        }
+        @include mobile {
+            padding: 0 12%;
+            top: 60px;
+        }
 
         li {
             cursor: pointer;
+
+            ::-moz-selection { 
+                background-color: transparent !important;
+            }
+            
+            ::selection {
+                background-color: transparent !important;
+            }
         }
 
         li > * {
@@ -185,6 +254,19 @@ label {
             font-weight: 500;
             letter-spacing: 0.02rem;
             cursor: pointer;
+
+            @include pc-sm {
+                font-size: 14px;
+            }
+            @include tablet-lg {
+                font-size: 21px;
+            }
+            @include tablet {
+                font-size: 19px;
+            }
+            @include mobile {
+                font-size: 18px;
+            }
         }
 
         li:hover > * {
@@ -194,24 +276,67 @@ label {
   
     .gnb {
       @include flexbox;
+
+      @include tablet-lg {
+        @include flex-direction(column);
+        // @include justify-content(center);
+       //display: block;
+        margin-top: 100px;
+        margin-bottom: auto;
+      }
+
+      @include mobile {
+          margin-top: 10vh;
+      }
   
       li {
         margin-left: 45px;
+
+        @include pc-sm {
+            margin-left: 32px;
+        }
+        @include tablet-lg {
+            padding: 5px 7px;
+            margin-left: 0;
+            margin-top: 26px;
+        }
+        @include mobile {
+            margin-top: 21px;
+            //display: table;
+        }
   
         &:first-child {
           margin-left: 0;
+          margin-top: 0;
         }
       }
     }//end of .gnb
 
     .utils { //로그인 & 회원가입
 
-        visibility: hidden; //임시
+        //visibility: hidden; //임시
         @include flexbox;
+
+        @include tablet-lg {
+            //@include justify-contents(center);
+            margin-bottom: 100px;
+        }
+
+        @include mobile {
+            margin-bottom: 10vh;
+        }
 
         li {
             position: relative;
             margin-left: 50px;
+
+            @include pc-sm {
+                margin-left: 30px;
+            }
+            @include tablet-lg {
+                margin-left: 40px;
+                padding: 5px 7px;
+            }
 
             &:before {
               position: absolute;
@@ -222,6 +347,19 @@ label {
               height: 15px;
               content: '';
               background-color: #d1d1d1;
+
+              @include pc-sm {
+                  height: 13px;
+                  left: -15px;
+              }
+              @include tablet-lg {
+                 top: 7px;
+                  height: 17px;
+                  left: -20px;
+              }
+              @include mobile {
+                  height: 14px;
+              }
             }
       
             &:first-child {
@@ -233,6 +371,93 @@ label {
             }
         }
     }
+
+
+    .hamburger {
+        z-index: 20;
+        display: none;
+        position: absolute;
+        top: 50%;
+        right: 16px;
+        width: 30px;
+        height: 30px;
+        margin-top: -15px;
+        background: none;
+        border: none;
+        outline: 0;
+
+        @include tablet-lg {
+            display: block;
+        }
+
+        &:focus {
+            outline: 0;
+        }
+
+        & > div {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+
+            span {
+                position: relative;
+                display: block;
+                width: 22px;
+                height: 2px;
+                transition: transform .2s;
+                background-color: #fff;
+
+                &:first-child {
+                    top: -5px;
+                }
+                &:nth-child(3) {
+                    opacity: 1;
+                    top: 5px;
+                    //width: 10px;
+                    //margin-left: 12px;
+                }
+            }
+        }
+
+
+
+    }//end of .hamburger
   } //end of .header
+
+
+  .header.opened {
+      z-index: 15;
+      background-color: #000;
+      transition: background-color 2ms;
+
+      .header-bg {
+        background-color: #000;
+        transition: background-color 2ms;
+      }
+
+      .header-container {
+        transform: translateY(0%);
+        transition: transform .35s;
+        transition-delay: 3ms;
+      }
+
+      .hamburger {
+          div span {
+              &:first-child {
+                transform: rotate(-45deg);
+                top: 2px;
+              }
+              &:nth-child(2) {
+                transform: rotate(45deg);
+                top: 0;
+              }
+              &:nth-child(3) {
+                transform: translate(-12px);
+                opacity: 0;
+              }
+          }
+      }
+  }
   
   

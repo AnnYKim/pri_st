@@ -5,7 +5,7 @@
 *   SECTION(5)
 */
 .section.roadmap {
-  overflow: hidden;
+  //overflow: hidden;
   background-color: #f6f6f6;
   background-position: 50% 50%;
   background-size: initial;
@@ -17,7 +17,8 @@
   }
 
   @include mobile {
-    height: 0;
+    height: 760px;
+    min-height: 0;
     background-position: 0% 150%;
     background-image: url(#{$path-image}bg-mo-roadmap.png); 
   }
@@ -123,7 +124,7 @@
         }
         @include mobile {
           left: 30px;
-          top: 280px;
+          top: 270px;
         }
 
         .goal-year {
@@ -155,7 +156,7 @@
         }
         @include mobile {
           left: 30px;
-          top: 434px;
+          top: 424px;
           margin-left: 0;
         }
 
@@ -186,7 +187,7 @@
         }
         @include mobile {
           left: 30px;
-          top: 610px;
+          top: 600px;
         }
 
 
