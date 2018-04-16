@@ -193,6 +193,14 @@
 
         .goal-year {
           background-image: url(#{$path-image}title-2020.png);
+
+          @include pc-sm {
+            width: 56px;
+          }
+
+          @include mobile {
+            width: 51px;
+          }
         }
       }
 

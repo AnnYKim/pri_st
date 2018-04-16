@@ -139,9 +139,12 @@ $(function(){
   function isSmallScreen(){
     if ($(window).width() < breakPoint[2]) {
       $("body").addClass('screen-small');
-      $('.header').removeClass('sticky opened').removeAttr('style');
+      $('.header').removeClass('sticky').removeAttr('style');
     }else{
       $("body").removeClass('screen-small');
+      if($('.header').hasClass("opened")){
+        $('.header').removeClass("opened");
+      }
     }
   }
   
@@ -211,7 +214,7 @@ $(function(){
     $navMenu.on('click',function(e){
       e.preventDefault();
 
-      $("body").hasClass("screen-small")? headerHeight = 60 : headerHeight = 90;
+      $("body").hasClass("screen-small") ? headerHeight = 60 : headerHeight = 90;
 
       var idx = $navMenu.index($(this));
       var position = (sectionTop[idx+1] - headerHeight);
@@ -234,6 +237,8 @@ $(function(){
    
 
     if(!$("body").hasClass("screen-small")){
+
+      $("body").hasClass("screen-small") ? headerHeight = 60 : headerHeight = 90;
 
       if ($(window).scrollTop() >= sectionTop[1] - headerHeight ) {
         $header.addClass('sticky').css({marginTop: headerHeight});
