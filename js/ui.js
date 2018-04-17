@@ -1,4 +1,3 @@
-
 //scroll reveal event
 $(function(){
   $(window).on("load",function(){
@@ -131,7 +130,7 @@ $(function(){
 
 
 
-//detect responsive ---- 삭제 예정!
+//detect responsive 
 
   var breakPoint = [640, 768, 1024, 1200];
 
@@ -148,33 +147,6 @@ $(function(){
     }
   }
   
-
-function alertMySize(){
-  $(".width").text($(window).width());
-  if($(window).width()<breakPoint[0]){
-    $(".size").text("모바일")
-  }
-  if($(window).width()>breakPoint[0]){
-    $(".size").text("태블릿 (작음)")
-  }
-  if($(window).width()>breakPoint[1]){
-    $(".size").text("태블릿 (큼)")
-  }
-  if($(window).width()>breakPoint[2]){
-    $(".size").text("PC (작음)")
-  }
-  if($(window).width()>breakPoint[3]){
-    $(".size").text("PC (큼)")
-  }
-}
-
-
-$(window).on('load',function(){
-  alertMySize();
-});
-
-
-
 
 /* **************** */
 
@@ -315,7 +287,6 @@ $(function(){
   $(window).on("load",function(){
 
     initEvent();
-    //$(".loading").hide();
     
 
   });
