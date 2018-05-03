@@ -711,6 +711,13 @@
 
 /* MODAL */
 
+
+//외부링크용
+.modal_white .modal-container .modal-footer .button-container input {
+    background-image: url(../images/icon-link.png), url(../images/icon-link-hover.png) !important;
+
+  }
+
 .modal {
   
   .dim {

@@ -1,3 +1,4 @@
+//2018-04-30 15:07
 //scroll reveal event
 $(function(){
   $(window).on("load",function(){
@@ -85,18 +86,31 @@ function scrollBarWidth() { //스크롤바 구하기
 // modal evnet
 $(function(){
   
-  var $modal = $(".modal");
-  var $modalDim = $(".dim");
+  var $allModal = $(".modal");
+  var $allModalDim = $(".dim");
 
-  function openPopup() { //모달창 열기
-      $modalDim.fadeIn(500,function(){
-          $modal.fadeIn();
+  var $modal = $(".modal_one"); //one pager용 모달
+  var $modal_white = $(".modal_white"); //white paper용 모달
+  var $modalDim = $modal.find(".dim"); //one pager용 모달딤
+  var $modalDim_white = $modal_white.find(".dim"); //one pager용 모달딤
+
+  function openPopup(order) { //모달창 열기
+      if(order === 1){
+        dim = $modalDim;
+        modal = $modal;
+
+      }else if(order === 2){
+        dim = $modalDim_white;
+        modal = $modal_white;
+      }
+      dim.fadeIn(500,function(){
+          modal.fadeIn();
       });
       preventScroll();
       
   }
   function closePopup() { //모달창 닫기
-    $modalDim.fadeOut();
+    $allModalDim.fadeOut();
     setTimeout(function(){
       allowScroll();
     },400);
@@ -104,7 +118,12 @@ $(function(){
           
   $("#pager").on('click',function(evt){
         evt.preventDefault();
-        openPopup();
+        openPopup(1);
+  });
+
+  $("#white").on('click',function(evt){
+        evt.preventDefault();
+        openPopup(2);
   });
 
   $(".modal-close").on("click",function(evt){ //닫기 버튼으로 닫기
@@ -113,13 +132,13 @@ $(function(){
 
   });
 
-  $modalDim.on("click",function(){ //dim 눌러 닫기
-      if($modal.is(":visible")){
+  $allModalDim.on("click",function(){ //dim 눌러 닫기
+      if($allModal.is(":visible")){
         closePopup();
       }	
   });
 
-  $modal.find(".modal-container").on("click",function(evt){ //버블링 방지
+  $allModal.find(".modal-container").on("click",function(evt){ //버블링 방지
       evt.stopPropagation();
   });
 
@@ -192,8 +211,8 @@ $(function(){
       var position = (sectionTop[idx+1] - headerHeight);
 
 
-      if (idx === 4){
-        return false; //one pager 모달용
+      if (idx === 4 || idx === 5){
+        return false; //모달용
       }
 
       scroll(position);
@@ -276,7 +295,6 @@ $(function(){
     $(window).on('resize',function(){
       isSmallScreen();
       getSectionTop();
-      alertMySize();
     });
 
 
@@ -293,5 +311,3 @@ $(function(){
 
 
 });
-
-
