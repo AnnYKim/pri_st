@@ -124,25 +124,29 @@ label {
   
   .header {
     $header-pedding: 50px;
+    $header-mo-height: 50px;
 
     z-index: 10;
     position: absolute;
     top: 0px;
     width: 100%;
     height: 90px;
-    background-color: rgba(0,0,0,0.5);
+    background-color: transparent;
     transition: background-color 2ms;
 
     @include tablet-lg {
         position: fixed !important;
         top: 0px !important;
-        height: 60px;
+        height: $header-mo-height;
+        background-color: rgba(0, 0, 0, 0.7);
+        // background-color: gold;
     }
   
     &.sticky {
       position: fixed;
       top: -90px;
       transition: margin .5s;
+      background-color: rgba(0,0,0,0.5);
     }
 
     .grid {
@@ -173,13 +177,13 @@ label {
 
       @include pc-md {
           left: 30px;
-          width: 154px;
-          height: 36px;
+          width: 132px;
+          height: 30px;
       }
       @include mobile {
           left: 20px;
-          width: 120px;
-          height: 28px;
+          width: 115px;
+          height: 26px;
       }
     }
 
@@ -192,7 +196,7 @@ label {
             z-index: 15;
             position: relative;
             width: 100%;
-            height: 60px;
+            height: $header-mo-height;
         }
 
 
@@ -204,7 +208,8 @@ label {
         top: 50%;
         right: $header-pedding;
         transform: translateY(-50%);
-        width: 910px;
+        // width: 910px;
+        width: 920px;
 
         @include pc-sm {
             right: 40px;
@@ -215,11 +220,11 @@ label {
             @include flex-direction(column);
             @include justify-content(flex-start);
             position: absolute;
-            top: 60px;
+            top: $header-mo-height;
             left: 0;
             right: initial;
             width: 100%;
-            height: calc(100vh - 60px);
+            height: calc(100vh - 50px);
             min-height: 600px;
             padding: 0 20%;
             box-sizing: border-box;
@@ -233,7 +238,7 @@ label {
         }
         @include mobile {
             padding: 0 46px;
-            top: 60px;
+            top: $header-mo-height;
         }
 
         li {
@@ -265,7 +270,8 @@ label {
                 font-size: 19px;
             }
             @include mobile {
-                font-size: 18px;
+                //font-size: 18px;
+                font-size: 5vw;
             }
         }
 
@@ -276,6 +282,7 @@ label {
   
     .gnb {
       @include flexbox;
+      @include align-items(center);
 
       @include tablet-lg {
         @include flex-direction(column);
@@ -288,6 +295,9 @@ label {
       @include mobile {
           margin-top: 10vh;
       }
+      @include mobile-sm {
+          margin-top: 8vh;
+      }
   
       li {
         margin-left: 45px;
@@ -299,6 +309,8 @@ label {
             padding: 5px 7px;
             margin-left: 0;
             margin-top: 26px;
+            width: 100%;
+            text-align: center;
         }
         @include mobile {
             margin-top: 21px;
@@ -316,14 +328,16 @@ label {
 
         //visibility: hidden; //임시
         @include flexbox;
+        @include align-items(center);
+        
 
         @include tablet-lg {
-            //@include justify-contents(center);
-            margin-bottom: 100px;
+            @include justify-content(center);
+            // margin-bottom: 100px;
         }
 
         @include mobile {
-            margin-bottom: 10vh;
+            // margin-bottom: 10vh;
         }
 
         li {
@@ -373,6 +387,7 @@ label {
     }
 
 
+
     .hamburger {
         z-index: 20;
         display: none;
@@ -386,8 +401,10 @@ label {
         border: none;
         outline: 0;
 
+
         @include tablet-lg {
             display: block;
+            right: 20px;
         }
 
         &:focus {
@@ -460,4 +477,72 @@ label {
       }
   }
   
+  
+
+
+
+
+.language-container {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    width: 120px;
+    height: 36px;
+
+  
+    @include tablet-lg {
+        margin: 38px auto 10vh;
+    }
+    @include mobile-sm {
+        margin: 20px auto 8vh;
+    }
+
+    &:before {
+      z-index: 1;
+      display: block;
+      position: absolute;
+      top: 12px;
+      right: 14px;
+      font-family: serif;
+      font-size: 11px;
+      color: #fff;
+      content: '▼';
+      pointer-events:none;
+    }
+  
+  
+    select {
+      width: 100%;
+      height: 100%;
+      padding: 7px 30px 7px 16px;
+      appearance: none;
+      -webkit-appearance: none;
+      font-size: 14px;
+      background: none;
+      border: 1px solid #fff;
+      outline: none;
+      color: #fff;
+      background-color: rgba(255,255,255,0.1);
+      cursor: pointer;
+      border-radius: 40px;
+      transition: background-color .2s, color .2s;
+      box-sizing: border-box;
+  
+      &:hover,
+      &:active,
+      &:focus,
+      &:focus-within {
+        color: #df263c;
+        background-color: #fff;
+        transition: background-color .2s, color .2s;
+      }
+      
+  
+      &:disabled {
+        color: #ccc !important;
+        border: 1px solid #ccc !important;
+      }
+    }
+  
+  }
   
